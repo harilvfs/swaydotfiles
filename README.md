@@ -1,0 +1,2 @@
+# sway
+ps sway config
