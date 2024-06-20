@@ -1,0 +1,10 @@
+[menu]
+executable = 'fuzzel'
+args = [
+     '--dmenu',
+     '--width=65',
+]
+
+[format]
+window_format = "{app_name:{:<16.16}} {title:{:<38.38}...} [{workspace_name:{:<1.2}}]\u0000icon\u001f{app_icon}"
+workspace_format = "    Workspace {name} on output {output_name}:"
