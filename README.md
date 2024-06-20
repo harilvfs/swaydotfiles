@@ -1,2 +1,2 @@
 # sway
-ps sway config
+my sway config
