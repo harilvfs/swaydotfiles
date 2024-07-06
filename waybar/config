@@ -6,7 +6,7 @@
     // "custom/gpu", "bluetooth",  "custom/weather", "temperature", "sway/window"
     // Choose the order of the modules
     "modules-left": ["sway/workspaces"],
-    "modules-right": [ "custom/cpugovernor", "cpu", "temperature", "custom/gpu", "pulseaudio", "backlight", "bluetooth", "network", "tray", "clock", "sway/language", "custom/scratchpad-indicator", "custom/pacman", "sway/mode", "custom/media", "custom/power"],
+    "modules-right": ["network", "custom/cpugovernor", "cpu", "temperature", "custom/gpu", "pulseaudio", "backlight", "bluetooth", "tray", "clock", "sway/language", "custom/scratchpad-indicator", "custom/pacman", "sway/mode", "custom/media", "custom/power"],
 
     // Modules configuration
     "sway/workspaces": {
@@ -24,6 +24,18 @@
             "default": ""
         }
     },
+
+    "network": {
+        "format-disabled": " Disabled",
+        "format-wifi": " {bandwidthDownBits:>}  {bandwidthUpBits:>}",
+        "tooltip-format-wifi": "{essid}",
+        "format-ethernet": "  {bandwidthDownBits:>}   {bandwidthUpBits:>}   ",
+        "tooltip-format-ethernet": "{ifname}: {ipaddr}/{cidr}",
+        "format-disconnected": " Disconnected",
+        "on-click": "footclient -T waybar_nmtui -e nmtui",
+        "interval": 2,
+    },
+
     "sway/mode": {
         "format": "<span style=\"italic\">{}</span>"
     },
@@ -45,9 +57,9 @@
     "backlight": {
         "format": "{icon}{percent: >3}%",
         "format-icons": ["", ""],
-        "tooltip-format": "Backlight (Scroll): {percent: >3}%",
-        "on-scroll-down": "brightnessctl -c backlight set 5%-",
-        "on-scroll-up": "brightnessctl -c backlight set +5%"
+        "tooltip-format": "Backlight (Scroll): {percent: >	3}%",
+        "on-scroll-down": "brightnessctl -c backlight set 	5%-",
+        "on-scroll-up": "brightnessctl -c backlight set +5	%"
     },    
     "sway/language": {
         "format": "<big></big> {}",
@@ -62,22 +74,22 @@
     },
     "clock": {
         "format": "  {:%H:%M   %e %b}",
-        "tooltip-format": "<big>{:%Y %B}</big>\n<tt><small>{calendar}</small></tt>",
+        "tooltip-format": "<big>{:%Y %B}</big>\n<tt><small	>{calendar}</small></tt>",
         "today-format": "<b>{}</b>",
         "on-click": "gnome-calendar"
     },
     "cpu": {
         "interval": "1",      
-        "format": "  {max_frequency}GHz <span color=\"darkgray\">| {usage}%</span>",
+        "format": "  {max_frequency}GHz <span color=\"dar	kgray\">| {usage}%</span>",
         "max-length": 13,
         "min-length": 13,
-        "on-click": "kitty -e htop --sort-key PERCENT_CPU",
+        "on-click": "kitty -e htop --sort-key PERCENT_CPU"	,
         "tooltip": false
     },
     "temperature": {
         //"thermal-zone": 1,
         "interval": "4",
-        "hwmon-path": "/sys/class/hwmon/hwmon3/temp1_input",
+        "hwmon-path": "/sys/class/hwmon/hwmon3/temp1_input	",
         "critical-threshold": 74,
         "format-critical": "  {temperatureC}°C",
         "format": "{icon}  {temperatureC}°C",
@@ -86,14 +98,14 @@
         "min-length": 7
     },
     "network": {
-        // "interface": "wlan0", // (Optional) To force the use of this interface,
+        // "interface": "wlan0", // (Optional) To force th	e use of this interface,
         "format-wifi": "  {essid}",
         "format-ethernet": "{ifname}: {ipaddr}/{cidr} ",
         "format-linked": "{ifname} (No IP) ",
         "format-disconnected": "",
         "format-alt": "{ifname}: {ipaddr}/{cidr}",
         "family": "ipv4",
-        "tooltip-format-wifi": "  {ifname} @ {essid}\nIP: {ipaddr}\nStrength: {signalStrength}%\nFreq: {frequency}MHz\n {bandwidthUpBits}  {bandwidthDownBits}",
+        "tooltip-format-wifi": "  {ifname} @ {essid}\nIP: {ipaddr}\nStrength: {signalStrength}%\nFreq: {frequency}MHz\n	 {bandwidthUpBits}  {bandwidthDownBits}",
         "tooltip-format-ethernet": " {ifname}\nIP: {ipaddr}\n {bandwidthUpBits}  {bandwidthDownBits}"
     },
     "custom/power": {
@@ -175,7 +187,7 @@
     "custom/scratchpad-indicator": {
         "interval": 3,
         "return-type": "json",
-        "exec": "swaymsg -t get_tree | jq --unbuffered --compact-output '( select(.name == \"root\") | .nodes[] | select(.name == \"__i3\") | .nodes[] | select(.name == \"__i3_scratch\") | .focus) as $scratch_ids | [..  | (.nodes? + .floating_nodes?) // empty | .[] | select(.id |IN($scratch_ids[]))] as $scratch_nodes | { text: \"\\($scratch_nodes | length)\", tooltip: $scratch_nodes | map(\"\\(.app_id // .window_properties.class) (\\(.id)): \\(.name)\") | join(\"\\n\") }'",
+        "exec": "swaymsg -t get_tree | jq --unbuffered --compact-output '( select(.name == \"root\") | .nodes[] | select	(.name == \"__i3\") | .nodes[] | select(.name == \"__i3_scratch\") | .focus) as $scratch_ids | [..  | (.nodes? +	 .floating_nodes?) // empty | .[] | select(.id |IN($scratch_ids[]))] as $scratch_nodes | { text: \"\\($scratch_n	odes | length)\", tooltip: $scratch_nodes | map(\"\\(.app_id // .window_properties.class) (\\(.id)): \\(.name)\"	) | join(\"\\n\") }'",
         "format": "{} 􏠜",
         "on-click": "exec swaymsg 'scratchpad show'",
         "on-click-right": "exec swaymsg 'move scratchpad'"
