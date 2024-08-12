@@ -51,7 +51,7 @@ cd sway</code></pre>
 </ul>
 
 <h2>📜 License</h2>
-<p>This project is licensed under the MIT License - see the <a href="LICENSE">LICENSE</a> file for details.</p>
+<p>This project does not have a formal license. You are free to use it at your own discretion.</p>
 
 <h2>🎉 Contribute</h2>
 <p>Found a bug or have an idea for a feature? Feel free to open an issue or submit a pull request.</p>
