@@ -1,6 +1,6 @@
 <h1 align="center">Sway Setup 🚀</h1>
 
-<p>Welcome to my Sway dotfiles! This setup is all about a minimal yet powerful tiling window manager experience on Linux. Follow the steps below to get started and customize your system with ease.</p>
+<p>Welcome to my Sway dotfiles! Simplify your Linux with a sleek Sway setup. Follow these quick steps to customize your tiling window manager.</p>
 
 <h2 align="center">Garuda Sway</h2>
 <p align="center">
