@@ -12,13 +12,14 @@
 <h3>1. Clone the Repository</h3>
 <p>Start by cloning this repository to your local machine:</p>
 
-<pre><code>git clone https://github.com/aayushx402/sway.git
+<pre><code>git clone https://github.com/aayushx402/sway
 cd sway</code></pre>
 
 <h3>2. Run the Setup Script</h3>
-<p>I’ve created a smooth setup script to handle everything for you. Just run it:</p>
+<p>I’ve created a smooth setup script to handle everything for you. First, give it the necessary permissions, then run it:</p>
 
-<pre><code>./setup.sh</code></pre>
+<pre><code>chmod +x setup.sh
+./setup.sh</code></pre>
 
 <p><strong>What it does:</strong></p>
 <ul>
