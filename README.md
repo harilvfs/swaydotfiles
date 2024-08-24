@@ -1,6 +1,6 @@
 <h1 align="center">Sway Setup 🚀</h1>
 
-<p>I've added a setup script for Sway. If you encounter any issues, please feel free to submit an issue or <a href="mailto:aayushchalise8@gmail.com">contact me</a>.</p>
+<p align="center"><strong>I've added a setup script for Sway. If you encounter any issues, please feel free to submit an issue or <a href="mailto:aayushchalise8@gmail.com">contact me</a></strong>
 
 <h2 align="center">Garuda Sway</h2>
 <p align="center">
