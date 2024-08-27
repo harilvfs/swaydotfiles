@@ -4,7 +4,7 @@
 
 
 > [!IMPORTANT]
-> The installation script is for Arch-based systems. Report any bugs by submitting an issue.
+> The installation script is for Arch or Arch-based systems. Report any bugs by submitting an issue.
 
 <h2 align="center">Garuda Sway</h2>
 <p align="center">
