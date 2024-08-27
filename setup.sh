@@ -14,7 +14,7 @@ echo -ne "
 "
  Installing dependencies
 echo -e "\033[1;32mInstalling dependencies...\033[0m"
-sudo pacman -S fastfetch fish foot nwg-drawer swappy sway swaylock swayr waybar --noconfirm
+sudo pacman -S sway wlroots fastfetch fish foot nwg-drawer swappy swaylock swayr waybar wayland pango cairo gdk-pixbuf2 json-c scdoc meson ninja pcre2 gtk-layer-shell jsoncpp libsigc++ libdbusmenu-gtk3 libxkbcommon fmt spdlog glibmm gtkmm3 alsa-utils pulseaudio libnl iw wob swaybg swayidle swaylock alacritty wofi wl-clipboard grim slurp mako ttf-nerd-fonts-symbols-mono --noconfirm
 
 # Cloning sway configuration repository
 echo -e "\033[1;32mCloning sway configuration repository...\033[0m"
