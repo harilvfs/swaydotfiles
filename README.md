@@ -13,25 +13,27 @@
 
 <h2>🚀 Quick Start</h2>
 
-<h3>1. Clone the Repository</h3>
-<p>Start by cloning this repository to your local machine:</p>
-
-<pre><code>git clone https://github.com/aayushx402/sway
-cd sway</code></pre>
-
-<h3>2. Run the Setup Script</h3>
-<p>I’ve created a smooth setup script to handle everything for you. First, give it the necessary permissions, then run it:</p>
+<h3>1. Run the Setup Script</h3>
+<p>This script is designed to install all the necessary dependencies for your Sway setup. First, make the script executable, and then run it:</p>
 
 <pre><code>chmod +x setup.sh
 ./setup.sh</code></pre>
 
 <p><strong>What it does:</strong></p>
 <ul>
-  <li>Installs all necessary dependencies</li>
-  <li>Copies config files to the appropriate locations</li>
-  <li>Applies the theme</li>
-  <li>Updates GRUB settings for a seamless experience</li>
+  <li>Installs all required dependencies for the dotfiles</li>
+  <li>Applies the CyberEXS GRUB theme</li>
+  <li>Updates GRUB settings based on your system (Debian/Arch)</li>
 </ul>
+
+<h3>2. Manually Copy Dotfiles</h3>
+<p>To finalize the setup, manually clone the repository and copy the dotfiles to your <code>~/.config</code> directory:</p>
+
+<pre><code>git clone https://github.com/aayushx402/sway
+cd sway
+cp -r * ~/.config/</code></pre>
+
+<p>This ensures that your Sway setup will have the proper configurations in place.</p>
 
 <h2 align="center">Grub</h2>
 <p align="center">
