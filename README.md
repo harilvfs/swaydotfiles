@@ -41,7 +41,7 @@ cp -r * ~/.config/</code></pre>
   <a href="/" target="_blank" rel="noreferrer"><img src="https://github.com/Jacksaur/Gorgeous-GRUB/blob/main/Images/CyberEXS.png" alt="CyberEXS GRUB"></a>
 </p>
 
-<p align="center"> **Wofi Garuda Sway** </p>
+<p align="center"><strong>Wofi Garuda Sway</strong> </p>
 <p align="center">
   <a href="/" target="_blank" rel="noreferrer"><img src="https://github.com/aayushx402/Linux-Background/blob/main/swappy-20240706-232843.png" alt="Wofi"></a>
 </p>
