@@ -58,5 +58,4 @@ cp -r * ~/.config/</code></pre>
   <li><strong>Other Dotfiles:</strong> <code>~/.config/*</code></li>
 </ul>
 
-<h2>🎉 Contribute</h2>
-<p>Found a bug or have an idea for a feature? Feel free to open an issue or submit a pull request.</p>
+
