@@ -36,7 +36,7 @@ cp -r * ~/.config/</code></pre>
 
 <p>This ensures that your Sway setup will have the proper configurations in place.</p>
 
-<h2 align="center">Grub</h2>
+<p align="center"><strong>Grub</strong></p>
 <p align="center">
   <a href="/" target="_blank" rel="noreferrer"><img src="https://github.com/Jacksaur/Gorgeous-GRUB/blob/main/Images/CyberEXS.png" alt="CyberEXS GRUB"></a>
 </p>
