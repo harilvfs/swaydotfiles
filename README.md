@@ -43,10 +43,15 @@ cp -r * ~/.config/</code></pre>
 <h3>3. Enjoy Your New Setup</h3>
 <p>Log out, and log back into Sway to enjoy your newly configured environment. The minimalism and efficiency await you!</p>
 
-<h2 align="center">Wofi</h2>
+<h2 align="center">Wofi Garuda Sway</h2>
 <p align="center">
   <a href="/" target="_blank" rel="noreferrer"><img src="https://github.com/aayushx402/Linux-Background/blob/main/swappy-20240706-232843.png" alt="Wofi"></a>
 </p>
+
+<h3>🎨 Credits</h3>
+<ul>
+  <li>Wofi theme inspiration and configuration was adapted from <a href="https://github.com/yurihikari/garuda-hyprdots">yurihikari's garuda-hyprdots</a>.</li>
+</ul>
 
 <h2>💡 Customization</h2>
 <p>Feel free to tweak the configuration files to suit your preferences. You’ll find them in the following locations:</p>
