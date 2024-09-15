@@ -41,7 +41,7 @@ cp -r * ~/.config/</code></pre>
   <a href="/" target="_blank" rel="noreferrer"><img src="https://github.com/Jacksaur/Gorgeous-GRUB/blob/main/Images/CyberEXS.png" alt="CyberEXS GRUB"></a>
 </p>
 
-<p align="center"><strong>Wofi Garuda Sway</strong> </p>
+<p align="center"><strong>Wofi From Garuda Sway</strong> </p>
 <p align="center">
   <a href="/" target="_blank" rel="noreferrer"><img src="https://github.com/aayushx402/Linux-Background/blob/main/swappy-20240706-232843.png" alt="Wofi"></a>
 </p>
@@ -59,11 +59,5 @@ cp -r * ~/.config/</code></pre>
   <li><strong>Other Dotfiles:</strong> <code>~/.config/*</code></li>
 </ul>
 
-<h2>📜 License</h2>
-<p>This project does not have a formal license. You are free to use it at your own discretion.</p>
-
 <h2>🎉 Contribute</h2>
 <p>Found a bug or have an idea for a feature? Feel free to open an issue or submit a pull request.</p>
-
-<hr>
-<p>Enjoy your slick and minimal Sway setup! 🚀</p>
