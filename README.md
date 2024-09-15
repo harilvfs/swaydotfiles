@@ -16,7 +16,9 @@
 <h3>1. Run the Setup Script</h3>
 <p>This script is designed to install all the necessary dependencies for your Sway setup. First, make the script executable, and then run it:</p>
 
-<pre><code>chmod +x setup.sh
+<pre><code>
+git clone https://github.com/aayushx402/sway
+chmod +x setup.sh
 ./setup.sh</code></pre>
 
 <p><strong>What it does:</strong></p>
