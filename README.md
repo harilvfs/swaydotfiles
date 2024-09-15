@@ -2,14 +2,13 @@
 
 <p align="center"><strong>I've added a setup script for Sway Dependencies Installation. If you encounter any issues, please feel free to submit an issue or <a href="mailto:aayushchalise8@gmail.com">contact me</a></strong>
 
-
-> [!IMPORTANT]
-> The installation script is for Arch or Arch-based systems. Report any bugs by submitting an issue.
-
 <h2 align="center">Garuda Sway</h2>
 <p align="center">
   <a href="/" target="_blank" rel="noreferrer"><img src="https://github.com/aayushx402/Linux-Background/blob/main/IMG_20240706_232523.png" alt="Garuda Sway"></a>
 </p>
+
+> [!IMPORTANT]
+> The installation script is for Arch or Arch-based systems. Report any bugs by submitting an issue.
 
 <h2>🚀 Quick Start</h2>
 
@@ -59,5 +58,4 @@ cp -r * ~/.config/</code></pre>
   <li><strong>Other Dotfiles:</strong> <code>~/.config/*</code></li>
 </ul>
 
-<h2>🎉 Contribute</h2>
-<p>Found a bug or have an idea for a feature? Feel free to open an issue or submit a pull request.</p>
+
