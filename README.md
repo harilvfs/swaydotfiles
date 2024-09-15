@@ -40,9 +40,6 @@ cp -r * ~/.config/</code></pre>
   <a href="/" target="_blank" rel="noreferrer"><img src="https://github.com/Jacksaur/Gorgeous-GRUB/blob/main/Images/CyberEXS.png" alt="CyberEXS GRUB"></a>
 </p>
 
-<h3>3. Enjoy Your New Setup</h3>
-<p>Log out, and log back into Sway to enjoy your newly configured environment. The minimalism and efficiency await you!</p>
-
 <h2 align="center">Wofi Garuda Sway</h2>
 <p align="center">
   <a href="/" target="_blank" rel="noreferrer"><img src="https://github.com/aayushx402/Linux-Background/blob/main/swappy-20240706-232843.png" alt="Wofi"></a>
