@@ -1,6 +1,6 @@
 <h1 align="center">SwayWM Setup 🚀</h1>
 
-<p align="center"><strong>I've added a setup script for Sway. If you encounter any issues, please feel free to submit an issue or <a href="mailto:aayushchalise8@gmail.com">contact me</a></strong>
+<p align="center"><strong>I've added a setup script for Sway Dependencies Installation. If you encounter any issues, please feel free to submit an issue or <a href="mailto:aayushchalise8@gmail.com">contact me</a></strong>
 
 
 > [!IMPORTANT]
