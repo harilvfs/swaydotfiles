@@ -1,3 +1,5 @@
+**This project has switched to Codeberg.** <br> [![Switched to Codeberg](https://img.shields.io/badge/Switched_to-Codeberg-blue?style=for-the-badge&logo=codeberg&logoColor=white)](https://codeberg.org/aayushchalise/sway)
+
 <h1 align="center">SwayWM Setup 🚀</h1>
 
 <p align="center"><strong>I've added a setup script for Sway Dependencies Installation. If you encounter any issues, please feel free to submit an issue or <a href="mailto:aayushchalise8@gmail.com">contact me</a></strong>
