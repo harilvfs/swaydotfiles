@@ -42,7 +42,7 @@ cp -r * ~/.config/</code></pre>
 
 <p align="center"><strong>Wofi From Garuda Sway</strong> </p>
 <p align="center">
-  <a href="/" target="_blank" rel="noreferrer"><img src="https://github.com/harilvfs/assets/blob/main/swappy-20240706-232843.png" alt="Wofi"></a>
+  <a href="/" target="_blank" rel="noreferrer"><img src="https://github.com/harilvfs/assets/blob/main/images/swappy-20240706-232843.png" alt="Wofi"></a>
 </p>
 
 <h3>🎨 Credits</h3>
