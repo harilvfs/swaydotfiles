@@ -4,7 +4,7 @@
 
 <h2 align="center">Garuda Sway</h2>
 <p align="center">
-  <a href="/" target="_blank" rel="noreferrer"><img src="https://github.com/aayushx402/Linux-Background/blob/main/IMG_20240706_232523.png" alt="Garuda Sway"></a>
+  <a href="/" target="_blank" rel="noreferrer"><img src="https://github.com/harilvfs/assets/blob/main/IMG_20240706_232523.png" alt="Garuda Sway"></a>
 </p>
 
 > [!IMPORTANT]
@@ -30,7 +30,7 @@ chmod +x setup.sh
 <p>To finalize the setup, manually clone the repository and copy the dotfiles to your <code>~/.config</code> directory:</p>
 
 <pre><code>git clone https://github.com/harilvfs/swaydotfiles
-cd swaydotfiles
+cd swaydotfiles/
 cp -r * ~/.config/</code></pre>
 
 <p>This ensures that your Sway setup will have the proper configurations in place.</p>
@@ -42,7 +42,7 @@ cp -r * ~/.config/</code></pre>
 
 <p align="center"><strong>Wofi From Garuda Sway</strong> </p>
 <p align="center">
-  <a href="/" target="_blank" rel="noreferrer"><img src="https://github.com/aayushx402/Linux-Background/blob/main/swappy-20240706-232843.png" alt="Wofi"></a>
+  <a href="/" target="_blank" rel="noreferrer"><img src="https://github.com/harilvfs/assets/blob/main/swappy-20240706-232843.png" alt="Wofi"></a>
 </p>
 
 <h3>🎨 Credits</h3>
