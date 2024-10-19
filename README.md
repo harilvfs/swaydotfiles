@@ -4,7 +4,7 @@
 
 <h2 align="center">Garuda Sway</h2>
 <p align="center">
- <img src="https://github.com/harilvfs/assets/blob/main/images/IMG_20240706_232523.png" alt="Garuda Sway"></a>
+<a> <img src="https://github.com/harilvfs/assets/blob/main/images/IMG_20240706_232523.png" alt="Garuda Sway"> </a>
 </p>
 
 > [!IMPORTANT]
