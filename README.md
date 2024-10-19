@@ -4,7 +4,7 @@
 
 <h2 align="center">Garuda Sway</h2>
 <p align="center">
-  <a href="/" target="_blank" rel="noreferrer"><img src="https://github.com/harilvfs/assets/blob/main/images/IMG_20240706_232523.png" alt="Garuda Sway"></a>
+ <img src="https://github.com/harilvfs/assets/blob/main/images/IMG_20240706_232523.png" alt="Garuda Sway"></a>
 </p>
 
 > [!IMPORTANT]
