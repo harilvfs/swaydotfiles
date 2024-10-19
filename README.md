@@ -37,12 +37,12 @@ cp -r * ~/.config/</code></pre>
 
 <p align="center"><strong>Grub</strong></p>
 <p align="center">
-  <a href="/" target="_blank" rel="noreferrer"><img src="https://github.com/Jacksaur/Gorgeous-GRUB/blob/main/Images/CyberEXS.png" alt="CyberEXS GRUB"></a>
+  <a><img src="https://github.com/Jacksaur/Gorgeous-GRUB/blob/main/Images/CyberEXS.png" alt="CyberEXS GRUB"></a>
 </p>
 
 <p align="center"><strong>Wofi From Garuda Sway</strong> </p>
 <p align="center">
-  <a href="/" target="_blank" rel="noreferrer"><img src="https://github.com/harilvfs/assets/blob/main/images/swappy-20240706-232843.png" alt="Wofi"></a>
+  <a><img src="https://github.com/harilvfs/assets/blob/main/images/swappy-20240706-232843.png" alt="Wofi"></a>
 </p>
 
 <h3>🎨 Credits</h3>
