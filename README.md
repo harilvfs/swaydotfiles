@@ -1,6 +1,6 @@
 <h1 align="center">SwayWM Setup 🚀</h1>
 
-<p align="center"><strong>I've added a setup script for Sway Dependencies Installation. If you encounter any issues, please feel free to submit an issue or <a href="mailto:ingoprivate@gmail.com">contact me</a></strong>
+<p align="center"><strong>I've added a setup script for Sway Dependencies Installation. If you encounter any issues, please feel free to submit an issue or Contact us <a href="mailto:harilvfs@chalisehari.com.np">harilvfs@chalisehari.com.np</a></strong>
 
 <h2 align="center">Garuda Sway</h2>
 <p align="center">
@@ -8,7 +8,7 @@
 </p>
 
 > [!IMPORTANT]
-> The installation script is for Arch or Arch-based systems. Report any bugs by submitting an issue.
+> The installation script is for `Arch` or `Arch-based systems` Report any bugs by submitting an issue.
 
 <h2>🚀 Quick Start</h2>
 
