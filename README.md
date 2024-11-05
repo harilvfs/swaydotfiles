@@ -12,12 +12,12 @@
 
 <h2>🚀 Quick Start</h2>
 
-<h3>1. Run the Setup Script</h3>
-<p>This script is designed to install all the necessary dependencies for your Sway setup. First, make the script executable, and then run it:</p>
+<h3>Run the Setup Script</h3>
+<p>This script is designed to install all the necessary dependencies for your Sway setup.</p>
 
-<pre><code>git clone https://github.com/swaydotfiles && cd swaydotfiles/
-chmod +x setup.sh
-./setup.sh</code></pre>
+```bash
+bash <(curl -L https://raw.githubusercontent.com/harilvfs/swaydotfiles/refs/heads/main/setup.sh)
+```
 
 <p><strong>What it does:</strong></p>
 <ul>
@@ -29,9 +29,11 @@ chmod +x setup.sh
 <h3>2. Manually Copy Dotfiles</h3>
 <p>To finalize the setup, manually clone the repository and copy the dotfiles to your <code>~/.config</code> directory:</p>
 
-<pre><code>git clone https://github.com/harilvfs/swaydotfiles
+```bash
+git clone https://github.com/harilvfs/swaydotfiles
 cd swaydotfiles/
-cp -r * ~/.config/</code></pre>
+cp -r * ~/.config
+```
 
 <p>This ensures that your Sway setup will have the proper configurations in place.</p>
 
