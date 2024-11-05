@@ -1,8 +1,8 @@
-<h1 align="center">SwayWM Setup 🚀</h1>
+<h1 align="center">SwayWM</h1>
 
 <p align="center"><strong>I've added a setup script for Sway Dependencies Installation. If you encounter any issues, please feel free to submit an issue or Contact us <a href="mailto:harilvfs@chalisehari.com.np">harilvfs@chalisehari.com.np</a></strong>
 
-<h2 align="center">Garuda Sway</h2>
+<h3 align="center">Desktop</h3>
 <p align="center">
 <a> <img src="https://github.com/harilvfs/assets/blob/main/images/IMG_20240706_232523.png" alt="Garuda Sway"> </a>
 </p>
