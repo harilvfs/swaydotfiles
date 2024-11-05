@@ -12,7 +12,7 @@
 
 <h2>🚀 Quick Start</h2>
 
-<h3>Run the Setup Script</h3>
+<h3>1.Run the Setup Script</h3>
 <p>This script is designed to install all the necessary dependencies for your Sway setup.</p>
 
 ```bash
@@ -37,12 +37,12 @@ cp -r * ~/.config
 
 <p>This ensures that your Sway setup will have the proper configurations in place.</p>
 
-<p align="center"><strong>Grub</strong></p>
+<h3 align="center">Grub</h3>
 <p align="center">
   <a><img src="https://github.com/Jacksaur/Gorgeous-GRUB/blob/main/Images/CyberEXS.png" alt="CyberEXS GRUB"></a>
 </p>
 
-<p align="center"><strong>Wofi From Garuda Sway</strong> </p>
+<h3 align="center">Wofi From Garuda Sway</h3>
 <p align="center">
   <a><img src="https://github.com/harilvfs/assets/blob/main/images/swappy-20240706-232843.png" alt="Wofi"></a>
 </p>
