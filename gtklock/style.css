@@ -1,0 +1,53 @@
+* {
+    border: none;
+    text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.8)
+}
+window {
+    background-image: url("sway_aurora_honeycomb_blur.png");
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+    background-color: black;
+}
+#clock-label {
+    font-family: JetBrainsMono;
+    font-size: 64.0px;
+}
+
+#input-field {
+    border-radius: 10px;
+    background-color: rgba(46,52,64,0.8);
+    border: .5px solid rgba(46,52,64,0.4);
+    border-radius: 4px;
+    color: rgba(46,52,64,0.5);
+    padding-top: 5px;
+    padding-bottom: 5px;
+}
+
+#unlock-button {
+    background: none;
+    background-color: transparent;
+    color: transparent;
+    font-size: 0px;
+}
+
+#powerbar-box button {
+    background: none;
+    background-color: transparent;
+    border-radius: 10px;
+    padding: 4px;
+}
+
+#powerbar-box button:hover {
+    background-color: rgba(129,161,193, 0.4);
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0,0,0,0.8);
+}
+
+#input-label {
+    font-size: 0px;
+}
+
+#window-box infobar {
+    background-color: transparent;
+}

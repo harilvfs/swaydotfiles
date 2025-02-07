@@ -1,0 +1,3 @@
+#!/usr/bin/env bash
+pkill swaybg
+swaybg -i '/usr/share/wallpapers/garuda-wallpapers/sway_aurora_honeycomb_sgs.png' -m fill &

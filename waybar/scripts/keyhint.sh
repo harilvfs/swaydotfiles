@@ -53,7 +53,7 @@ cheat=(
     "<span font='$font 14'>Workspace overview</span>"
     "<span font='$font 14'> + Shift + Tab</span>"
     "<span font='$font 14'>Resize a window</span>"
-    "<span font='$font 14'> + </span><span font='$font 18'>󰰞</span><span font='$font 14'> , </span><span font='$font 18'>󰜳 󰜰 󰜹 󰜶</span><span font='$font 14'> , Esc</span>"
+    "<span font='$font 14'> + Ctrl + </span><span font='$font 18'>󰜳 󰜰 󰜹 󰜶</span>"
     ""
     "<span font='$font 16' foreground='#808080'>SCRATCHPAD</span>"
     ""

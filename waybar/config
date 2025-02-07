@@ -1,195 +1,336 @@
 {
-    "layer": "top", // Waybar at top layer
+    "layer": "top",
     "position": "top", // Waybar position (top|bottom|left|right)
-    // "height": 36, // Waybar height (to be removed for auto height)
-    // Archived modules
-    // "custom/gpu", "bluetooth",  "custom/weather", "temperature", "sway/window"
-    // Choose the order of the modules
-    "modules-left": ["sway/workspaces"],
-    "modules-right": ["network", "custom/cpugovernor", "cpu", "temperature", "custom/gpu", "pulseaudio", "backlight", "bluetooth", "tray", "clock", "sway/language", "custom/scratchpad-indicator", "custom/pacman", "sway/mode", "custom/media", "custom/power"],
+    //"height": 30, // Uncomment to set a custom height
+    //"output": "DP-1", // Uncomment to specify a display
+    //"width": 1850, // Uncomment to set a custom width
 
-    // Modules configuration
+// Configuration - modules-left
+
+    "modules-left": [
+        "sway/workspaces",
+        "sway/window"
+    ],
+
     "sway/workspaces": {
         "disable-scroll": true,
         "all-outputs": true,
         "format": "{icon}",
         "format-icons": {
-            "1": "<span color=\"#D8DEE9\">1</span>",
-            "2": "<span color=\"#D8DEE9\">2</span>",
-            "3": "<span color=\"#D8DEE9\">3</span>",
-            "4": "<span color=\"#D8DEE9\">4</span>",
-            "5": "<span color=\"#D8DEE9\">5</span>",
-            "urgent": "",
-            "focused": "",
-            "default": ""
+            "3": "3",
+            "4": "4",
+            "5": "5",
+            "6": "6",
+            "7": "7",
+            "8": "8",
+            "9": "9",
+            "10": "10"
         }
     },
 
+    "sway/window": {
+        "format": "{}",
+        //"all-outputs": true, // Active window shows only on active display when commented
+        "max-length": 120,
+        "on-click": "swayr merge-config ~/.config/swayr/waybar_config.toml; swayr switch-workspace-or-window; swayr reload-config",
+    },
+
+// Configuration - modules-center
+    
+    "modules-center": [
+        "network"
+    ],
+
     "network": {
         "format-disabled": " Disabled",
-        "format-wifi": " {bandwidthDownBits:>}  {bandwidthUpBits:>}",
-        "tooltip-format-wifi": "{essid}",
-        "format-ethernet": "  {bandwidthDownBits:>}   {bandwidthUpBits:>}   ",
+        "format-wifi": " {bandwidthDownBits:>} 󰶡 {bandwidthUpBits:>} 󰶣",
+        "tooltip-format-wifi": "ESSID: {essid}",
+        "format-ethernet": "󰈀 {bandwidthDownBits:>} 󰶡 {bandwidthUpBits:>} 󰶣",
         "tooltip-format-ethernet": "{ifname}: {ipaddr}/{cidr}",
         "format-disconnected": " Disconnected",
         "on-click": "footclient -T waybar_nmtui -e nmtui",
-        "interval": 2,
+        "interval": 2
     },
 
-    "sway/mode": {
-        "format": "<span style=\"italic\">{}</span>"
+// Configuration - modules-right
+
+    "modules-right": [
+        "privacy",
+        "group/updates",
+        "custom/keyboard-layout",
+        "group/resources",
+        "memory",
+        "wireplumber",
+        "battery",
+        "group/settings",
+        "clock",
+        "group/power",
+    ],
+
+    "privacy": {
+    	"icon-spacing": 4,
+    	"icon-size": 18,
+    	"transition-duration": 250,
+    	"modules": [
+    		{
+    			"type": "screenshare",
+    			"tooltip": true,
+    			"tooltip-icon-size": 24
+    		},
+    		{
+    			"type": "audio-out",
+    			"tooltip": true,
+    			"tooltip-icon-size": 24
+    		},
+    		{
+    			"type": "audio-in",
+    			"tooltip": true,
+    			"tooltip-icon-size": 24
+    		}
+    	]
     },
-    "sway/window": {
-        "format": "{}",
-        "max-length": 50, 
-        "tooltip": false
-    },
-    "bluetooth": {
-        "interval": 30,
-        "format": "{icon}",
-        // "format-alt": "{status}",
-        "format-icons": {
-            "enabled": "",
-            "disabled": ""
+
+    "group/updates": {
+        "orientation": "inherit",
+        "drawer": {
+            "transition-duration": 500,
+            "children-class": "updates-drawer",
+            "transition-left-to-right": false,
+            "click-to-reveal": false,
         },
-        "on-click": "blueberry"
+        "modules": [
+            "custom/updates",
+            "custom/pacman",
+        ]
     },
-    "backlight": {
-        "format": "{icon}{percent: >3}%",
-        "format-icons": ["", ""],
-        "tooltip-format": "Backlight (Scroll): {percent: >	3}%",
-        "on-scroll-down": "brightnessctl -c backlight set 	5%-",
-        "on-scroll-up": "brightnessctl -c backlight set +5	%"
-    },    
-    "sway/language": {
-        "format": "<big></big> {}",
-        "max-length": 5,
-        "min-length": 5,        
+    "custom/updates": {
+        "format": "{icon}{0}",
+        "return-type": "json",
+        "format-icons": {
+            "has-updates": " ",
+            "updated": ""
+        },
+        "exec-if": "which waybar-module-pacman-updates",
+        "exec": "waybar-module-pacman-updates --no-zero-output --interval-seconds 5 --network-interval-seconds 300 --tooltip-align-columns",
+        "on-click": "footclient -T waybar_pacseek -e pacseek -ui",
     },
-        "tooltip": "true"
+
+    "custom/pacman": {
+        "format": "󰮯",
+        "tooltip-format": "L󰍽: Pacseek\nR󰍽: Upgrade",
+        "on-click": "footclient -T waybar_pacseek -e pacseek",
+        "on-click-right": "footclient -T waybar_garuda-update -e bash -c 'garuda-update && (read -p \"Update complete. Press Enter to exit.\" && exit 0) || (read -p \"Update failed. Press Enter to exit.\" && exit 1)'",
     },
-    "tray": {
-        //"icon-size": 11,
-        "spacing": 5
+
+    "custom/keyboard-layout": {
+      	"exec": "i=$(swaymsg -t get_inputs); echo \"$i\" | grep -m1 'xkb_active_layout_name' | cut -d '\"' -f4",
+        "format": "",
+        "tooltip-format": "󰍽: cheatsheet\nLayout: {0}",
+        // Interval set only as a fallback; use signal to update the module more immediately
+        "interval": 30,
+        // See example config for sending signal to Waybar in ~/.config/sway/config.d/input
+        "signal": 1,
+        "on-click": "~/.config/waybar/scripts/keyhint.sh",
     },
-    "clock": {
-        "format": "  {:%H:%M   %e %b}",
-        "tooltip-format": "<big>{:%Y %B}</big>\n<tt><small	>{calendar}</small></tt>",
-        "today-format": "<b>{}</b>",
-        "on-click": "gnome-calendar"
+    
+    "group/resources": {
+        "orientation": "inherit",
+        "drawer": {
+            "transition-duration": 500,
+            "children-class": "resources-drawer",
+            "transition-left-to-right": true,
+            "click-to-reveal": true,
+        },
+        "modules": [
+            "cpu",
+            "temperature",
+            "disk",
+        ]
     },
+
     "cpu": {
-        "interval": "1",      
-        "format": "  {max_frequency}GHz <span color=\"dar	kgray\">| {usage}%</span>",
-        "max-length": 13,
-        "min-length": 13,
-        "on-click": "kitty -e htop --sort-key PERCENT_CPU"	,
-        "tooltip": false
+        "interval": 5,
+        "format": " {usage}%",
+        "states": {
+            "warning": 70,
+            "critical": 90,
+        },
     },
+    
     "temperature": {
-        //"thermal-zone": 1,
-        "interval": "4",
-        "hwmon-path": "/sys/class/hwmon/hwmon3/temp1_input	",
-        "critical-threshold": 74,
-        "format-critical": "  {temperatureC}°C",
-        "format": "{icon}  {temperatureC}°C",
-        "format-icons": ["", "", ""],
-        "max-length": 7,
-        "min-length": 7
+        "critical-threshold": 80,
+        "format-critical": " {temperatureC}°C",
+        "format": " {temperatureC}°C",
+        "tooltip-format": "  󰍽: s-tui\n {temperatureC}° Celsius\n{temperatureF}° Fahrenheit\n{temperatureK}° Kelvin",
+        "on-click": "footclient -T waybar_s-tui -e s-tui"
     },
-    "network": {
-        // "interface": "wlan0", // (Optional) To force th	e use of this interface,
-        "format-wifi": "  {essid}",
-        "format-ethernet": "{ifname}: {ipaddr}/{cidr} ",
-        "format-linked": "{ifname} (No IP) ",
-        "format-disconnected": "",
-        "format-alt": "{ifname}: {ipaddr}/{cidr}",
-        "family": "ipv4",
-        "tooltip-format-wifi": "  {ifname} @ {essid}\nIP: {ipaddr}\nStrength: {signalStrength}%\nFreq: {frequency}MHz\n	 {bandwidthUpBits}  {bandwidthDownBits}",
-        "tooltip-format-ethernet": " {ifname}\nIP: {ipaddr}\n {bandwidthUpBits}  {bandwidthDownBits}"
+
+    "disk": {
+        "interval": 600,
+        "format": "󰋊 {percentage_used}%",
+        "path": "/",
+        "on-click": "footclient -T waybar_dua -e dua i /",
+        "tooltip-format": "    󰍽: dua\nTotal: {total}\n Used: {used} ({percentage_used}%)\n Free: {free} ({percentage_free}%)",
+    },
+
+    "memory": {
+        "interval": 5,
+        "format": " {}%",
+        "on-click": "footclient -T waybar_btm -e btm", 
+        "states": {
+            "warning": 70,
+            "critical": 90
+        },
+        "tooltip-format": "        󰍽: btm\n   Memory: {total} GiB\n   In use: {used} GiB ({percentage}%)\nAvailable: {avail} GiB\n     Swap: {swapTotal} GiB\n   In use: {swapUsed} GiB ({swapPercentage}%)\nAvailable: {swapAvail} GiB",
+    },
+
+    "wireplumber": {
+        "format": "{icon} {volume}%",
+        "format-muted": "󰝟 muted",
+        "on-click": "pavucontrol",
+        "on-click-right": "pamixer --toggle-mute",
+        "format-icons": ["󰕿", "󰖀", "󰕾"],
+        "tooltip-format": "L󰍽: pavucontrol\nR󰍽: Toggle mute\nNode: {node_name}",
+    },
+
+    "battery": {
+        "states": {
+            "warning": 30,
+            "critical": 15
+        },
+        "format": "{icon} {capacity}%",
+        "format-charging": "{icon} {capacity}% ",
+        "format-plugged": "{icon} {capacity}% ",
+        "format-full": "{icon} {capacity}% ",
+        "format-icons": ["", "", "", "", ""],
+        "tooltip-format": "󰍽: battop\n{timeTo}",
+        "on-click": "footclient -T waybar_battop -e battop",
+    },
+
+    "group/settings": {
+        "orientation": "inherit",
+        "drawer": {
+            "transition-duration": 500,
+            "children-class": "settings-drawer",
+            "transition-left-to-right": true,
+            "click-to-reveal": true,
+        },
+        "modules": [
+            "custom/settings",
+            "idle_inhibitor",
+            "backlight",
+            "bluetooth",
+            "tray",
+        ]
+    },
+    "custom/settings": {
+        "format":"",
+        "tooltip-format": "Settings"
+    },
+
+    "idle_inhibitor": {
+        "format": "{icon}",
+        "format-icons": {
+            "activated": " ",
+            "deactivated": " "
+        },
+        "tooltip-format-activated": "Idle Inhibitor Activated",
+        "tooltip-format-deactivated": "Idle Inhibitor Deactivated"
+    },
+
+    "backlight": {
+        "format": "{icon} {percent}%",
+        "format-icons": ["󰄰", "󰪞", "󰪟", "󰪠", "󰪡", "󰪢", "󰪣", "󰪤", "󰪥"],
+        "tooltip-format": "Backlight (Scroll): {percent:}%",
+        "on-scroll-down": "brightnessctl -c backlight set 5%-",
+        "on-scroll-up": "brightnessctl -c backlight set +5%"
+    },
+
+    "bluetooth": {
+    	"format": "󰂯 {status}:{num_connections}",
+    	"format-on": "󰂯",
+    	"format-off": "󰂲",
+    	"format-disabled": "", // an empty format will hide the module
+    	"format-icons": ["󰤾", "󰤿", "󰥀", "󰥁", "󰥂", "󰥃", "󰥄", "󰥅", "󰥆", "󰥈"],
+    	"tooltip-format": "L󰍽: bluetui\nR󰍽: bluetoothctl power on/off\nController: {controller_alias}\t{controller_address}\nConnected devices: {num_connections}",
+    	"tooltip-format-connected": "L󰍽: bluetui\nR󰍽: bluetoothctl power on/off\nController: {controller_alias}\t{controller_address}\nConnected devices: {num_connections}\nDevice---------------Address------------Battery\n{device_enumerate}",
+    	"tooltip-format-enumerate-connected": "{device_alias:<20} {device_address:<18}",
+    	"tooltip-format-enumerate-connected-battery": "{device_alias:<20.20} {device_address:<18.18} {icon} {device_battery_percentage}%",
+       	"on-click": "footclient -T waybar_bluetui -e bluetui",
+       	"on-click-right": "~/.config/sway/scripts/bluetooth_toggle.sh"
+    },
+
+    "tray": {
+        "icon-size": 16,
+        "spacing":10
+    },
+
+    "clock": {
+        "format": "󰅐 {:%OI:%M %p}",
+        "on-click": "footclient -T waybar_calcurse -e calcurse",
+        // Uncomment to enable right-click calcurse-caldav sync (you need to set it up in calcurse config)
+        //"on-click-right": "notify-send \"Running calcurse-caldav...\" \"$(calcurse-caldav)\"",
+        "tooltip-format": " {:%A %m/%d}\n\n<tt><small>{calendar}</small></tt>",
+        "calendar": {
+            "on-scroll": 1,
+            "format": {
+                "months":     "<span color='#ffead3'><b>{}</b></span>",
+                "days":       "<span color='#ecc6d9'><b>{}</b></span>",
+                "weeks":      "<span color='#99ffdd'><b>W{}</b></span>",
+                "weekdays":   "<span color='#ffcc66'><b>{}</b></span>",
+                "today":      "<span color='#ff6699'><b><u>{}</u></b></span>"
+            },
+        },
+        "actions": {
+            "on-scroll-up": "shift_up",
+            "on-scroll-down": "shift_down"
+        },
+    },
+
+    "group/power": {
+        "orientation": "inherit",
+        "drawer": {
+            "transition-duration": 500,
+            "children-class": "power-drawer",
+            "transition-left-to-right": true,
+        },
+        "modules": [
+            "custom/power",
+            "custom/reboot",
+            "custom/reboot-uefi",
+            "custom/log-off",
+            "custom/suspend",
+            "custom/lock",
+        ]
     },
     "custom/power": {
-      	"format":"⏻",
-       	"on-click": "nwgbar",
-      	"tooltip": false,
+        "format":"⏻",
+        "on-click": "systemctl poweroff",
+        "tooltip-format": "Shutdown"
     },
-    "pulseaudio": {
-        "scroll-step": 3, // %, can be a float
-        "format": "{icon} {volume}% {format_source}",
-        "format-bluetooth": "{volume}% {icon} {format_source}",
-        "format-bluetooth-muted": " {icon} {format_source}",
-        "format-muted": " {format_source}",
-        //"format-source": "{volume}% ",
-        //"format-source-muted": "",
-        "format-source": "",
-        "format-source-muted": "",
-        "format-icons": {
-            "headphone": "",
-            "hands-free": "",
-            "headset": "",
-            "phone": "",
-            "portable": "",
-            "car": "",
-            "default": ["", "", ""]
-        },
-        "on-click": "pavucontrol",
-        "on-click-right": "pactl set-source-mute @DEFAULT_SOURCE@ toggle"
+    "custom/reboot": {
+        "format":"",
+        "on-click": "systemctl reboot",
+        "tooltip-format": "Reboot"
     },
-    "custom/pacman": {
-        "format": "<big>􏆲</big>  {}",
-        "interval": 3600,                     // every hour
-        "exec": "checkupdates | wc -l",       // # of updates
-        "exec-if": "exit 0",                  // always run; consider advanced run conditions
-        "on-click": "kitty -e 'yay'; pkill -SIGRTMIN+8 waybar", // update system
-        "signal": 8,
-        "max-length": 5,
-        "min-length": 3
+    "custom/reboot-uefi": {
+        "format":"",
+        "on-click": "systemctl reboot --firmware-setup",
+        "tooltip-format": "Reboot to UEFI"
     },
-    "custom/weather": {
-        "exec": "curl 'https://wttr.in/?format=1'",
-        "interval": 3600
+    "custom/log-off": {
+        "format":"󰍃",
+        "on-click": "swaymsg exit",
+        "tooltip-format": "Log out"
     },
-    "custom/gpu": {
-      "exec": "$HOME/.config/waybar/custom_modules/custom-gpu.sh",
-      "return-type": "json",
-      "format": "  {}",
-      "interval": 2,
-      "tooltip": "{tooltip}",
-      "max-length": 19,
-      "min-length": 19,
-      "on-click": "powerupp"
-      
-    }, 
-    "custom/cpugovernor": {
-      "format": "{icon}",
-      "interval": "30",
-      "return-type": "json",
-      "exec": "$HOME/.config/waybar/custom_modules/cpugovernor.sh",
-      "min-length": 2,
-      "max-length": 2,
-        "format-icons": {
-            "perf": "",
-            "sched": ""
-        },
-    },    
-    "custom/media": {
-        "format": "{icon} {}",
-        "return-type": "json",
-        "max-length": 40,
-        "format-icons": {
-            "spotify": "",
-            "default": "🎜"
-        },
-        "escape": true,
-        "exec": "$HOME/.config/waybar/mediaplayer.py 2> /dev/null" // Script in resources folder
-        // "exec": "$HOME/.config/waybar/mediaplayer.py --player spotify 2> /dev/null" // Filter player based on name
+    "custom/suspend": {
+        "format":"󰤄",
+        "on-click": "systemctl suspend",
+        "tooltip-format": "Suspend"
     },
-    "custom/scratchpad-indicator": {
-        "interval": 3,
-        "return-type": "json",
-        "exec": "swaymsg -t get_tree | jq --unbuffered --compact-output '( select(.name == \"root\") | .nodes[] | select	(.name == \"__i3\") | .nodes[] | select(.name == \"__i3_scratch\") | .focus) as $scratch_ids | [..  | (.nodes? +	 .floating_nodes?) // empty | .[] | select(.id |IN($scratch_ids[]))] as $scratch_nodes | { text: \"\\($scratch_n	odes | length)\", tooltip: $scratch_nodes | map(\"\\(.app_id // .window_properties.class) (\\(.id)): \\(.name)\"	) | join(\"\\n\") }'",
-        "format": "{} 􏠜",
-        "on-click": "exec swaymsg 'scratchpad show'",
-        "on-click-right": "exec swaymsg 'move scratchpad'"
-    },   
+    "custom/lock": {
+        "format":"󰌾",
+        "on-click": "gtklock",
+        "tooltip-format": "Lock"
+    },
 }

@@ -1,0 +1,14 @@
+anchor=top-right
+font=JetBrainsMono 12
+background-color=#3b4252
+text-color=#eceff4
+width=500
+height=500
+margin=20,20,20
+padding=10
+border-size=2
+border-color=#4c566a
+border-radius=5
+default-timeout=10000
+group-by=summary
+max-visible=-1

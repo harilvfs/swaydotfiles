@@ -1,0 +1,6 @@
+[menu]
+args = [
+     '--dmenu',
+     '--width=65',
+     '--anchor=top-left',
+]

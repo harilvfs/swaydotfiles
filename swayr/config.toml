@@ -8,3 +8,10 @@ args = [
 [format]
 window_format = "{app_name:{:<16.16}} {title:{:<38.38}...} [{workspace_name:{:<1.2}}]\u0000icon\u001f{app_icon}"
 workspace_format = "    Workspace {name} on output {output_name}:"
+icon_dirs = [
+    '/usr/share/icons/Tela-circle-nord/scalable/apps',
+    '/usr/share/icons/hicolor/48x48/apps',
+    '/usr/share/icons/hicolor/256x256/apps',
+    '/usr/share/icons/hicolor/scalable/apps',
+    '~/.local/share/icons/hicolor/48x48/apps/',
+]
