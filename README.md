@@ -42,18 +42,17 @@ bash <(curl -L https://raw.githubusercontent.com/harilvfs/swaydotfiles/refs/head
 sudo pacman -S gum figlet --noconfirm
 ```
 
----
 
 ### 🔹 **Manual Setup**  
 1️⃣ **Clone the Dotfiles**  
-```
+```bash
 git clone https://github.com/harilvfs/swaydotfiles.git ~/swaydotfiles
 cd swaydotiles/
 # Then copy the configuration files to their appropriate directories as shown in the repository's dotfiles.
 ```
 
 2️⃣ **Reload SwayWM**  
-```
+```bash
 sway reload
 ```
 
