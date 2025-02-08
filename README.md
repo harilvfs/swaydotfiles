@@ -1,4 +1,8 @@
+<div align="center">
+
 ## `SwayWM Dotfiles`
+
+</div>
 
 <p align="center">
   A clean and functional `SwayWM` setup inspired by 
