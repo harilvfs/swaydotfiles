@@ -1,7 +1,7 @@
-<h1 align="center">SwayWM Dotfiles</h1>
+<h1 align="center">`SwayWM Dotfiles`</h1>
 
 <p align="center">
-  A clean and functional SwayWM setup inspired by 
+  A clean and functional `SwayWM` setup inspired by 
   <a href="https://gitlab.com/garuda-linux/themes-and-settings/settings/garuda-sway-settings/-/tree/master">Garuda Sway Dotfiles</a>.
 </p>
 
@@ -11,17 +11,17 @@
 
 
 > **🚀 Features**
-> - Minimal and aesthetic **SwayWM** configuration  
-> - Custom **Waybar** with useful modules
-> - Preconfigured **Keybindings** for better workflow  
-> - **Autotiling** support for automatic window management  
-> - Optimized for **Wayland**  
+> - Minimal and aesthetic **`SwayWM`** configuration  
+> - Custom **`Waybar`** with useful modules
+> - Preconfigured **`Keybindings`** for better workflow  
+> - **`Autotiling`** support for automatic window management  
+> - Optimized for **`Wayland`**  
 > - Lightweight and efficient  
 
 <br>
 
 > [!CAUTION]
-> **I am NOT responsible for any system issues or data loss.**  
+> **I am NOT `responsible` for any system issues or data loss.**  
 > Please review the setup script before running it!  
 
 <br>
@@ -29,7 +29,7 @@
 > 🛠️ Installation  
 >
 > 🔹 **Automatic Setup (For Arch Linux)**  
-> If you're using **Arch Linux**, you can run the automated setup script:  
+> If you're using **`Arch Linux`**, you can run the automated setup script:  
 >
 > ```bash
 > bash <(curl -L https://raw.githubusercontent.com/harilvfs/swaydotfiles/refs/heads/main/setup.sh)
@@ -52,7 +52,7 @@
 > # Then copy the configuration files to their appropriate directories as shown in the repository's dotfiles.
 > ```
 
-> **2️⃣ Reload SwayWM**  
+> **2️⃣ Reload `SwayWM`**  
 > ```bash
 > sway reload
 > ```
@@ -72,7 +72,7 @@
 > [!NOTE]
 > **📌 Dependencies**
 >
-> Make sure you install the required dependencies before proceeding.
+> Make sure you install the required `dependencies` before proceeding.
 >
 > ✅ **Core Dependencies (Install via `pacman`)**
 > 
@@ -105,20 +105,20 @@
 
 ### 📜 Additional Notes  
 > [!NOTE]
-> This setup is optimized for **Arch Linux**, but might work on other distros with some modifications.  
-> Ensure you have **Wayland-compatible** applications for the best experience.  
+> This setup is optimized for **`Arch Linux`**, but might work on other distros with some modifications.  
+> Ensure you have **`Wayland-compatible`** applications for the best experience.  
 
 <br>
 
 ### 🎯 Related Projects  
 > [!TIP]  
-> Want a better **Bash prompt, Zsh setup, or other system enhancements**?  
-> Check out my **Carch Project**:  
+> Want a better **`Bash prompt`, `Zsh setup`, or other system enhancements**?  
+> Check out my **`Carch Project`**:  
 > **🔗 [Carch - Arch & Fedora Linux Automation](https://github.com/harilvfs/carch)**  
 
 <br>
 
 ### 🎯 Credits  
-> - Inspired by **[Garuda Sway Dotfiles](https://gitlab.com/garuda-linux/themes-and-settings/settings/garuda-sway-settings/-/tree/master)**  
-> - Maintained by [@harilvfs](https://github.com/harilvfs)  
+> - **Inspired by** **[Garuda Sway Dotfiles](https://gitlab.com/garuda-linux/themes-and-settings/settings/garuda-sway-settings/-/tree/master)**  
+> - **Maintained by** **[@harilvfs](https://github.com/harilvfs)**
 
