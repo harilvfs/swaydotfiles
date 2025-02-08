@@ -11,7 +11,7 @@ set {
     $right l
 
     # Default terminal emulator
-    $term footclient
+    $term  alacritty
 
     # Application launcher
     $launcher fuzzel
