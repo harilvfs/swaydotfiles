@@ -2,6 +2,8 @@
 
 This swaywm dotfiles are heavily inspired by [garuda sway dotfiles](https://gitlab.com/garuda-linux/themes-and-settings/settings/garuda-sway-settings/-/tree/master)
 
+<img src="http://raw.githubusercontent.com/harilvfs/assets/refs/heads/main/sway/swappy-20250209-011004.png" />
+
 > [!IMPORTANT]
 > Remember to install this dependencies before procedding
 
