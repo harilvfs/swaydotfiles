@@ -10,7 +10,7 @@
 
 <div align="center">
   
-  A clean and functional `SwayWM` setup inspired by 
+> A clean and functional `SwayWM` setup inspired by 
   <a href="https://gitlab.com/garuda-linux/themes-and-settings/settings/garuda-sway-settings/-/tree/master">Garuda Sway Dotfiles</a>.
 </div>
 
