@@ -45,18 +45,18 @@ sudo pacman -S gum figlet --noconfirm
 
 <br>
 
-### 🔹 **Manual Setup**  
-1️⃣ **Clone the Dotfiles**  
-```javascript
-git clone https://github.com/harilvfs/swaydotfiles.git ~/swaydotfiles
-cd swaydotiles/
-# Then copy the configuration files to their appropriate directories as shown in the repository's dotfiles.
-```
+> **Manual Setup**  
+> **Clone the Dotfiles**  
+>```javascript
+> git clone https://github.com/harilvfs/swaydotfiles.git ~/swaydotfiles
+> cd swaydotiles/
+> # Then copy the configuration files to their appropriate directories as shown in the repository's dotfiles.
+> ```
 
-2️⃣ **Reload SwayWM**  
-```bash
-sway reload
-```
+> **Reload SwayWM**  
+> ```bash
+> sway reload
+> ```
 
 <br>
 
@@ -89,17 +89,6 @@ sway reload
 > ```bash
 > paru -S swayfx waybar-module-pacman-updates-git wlroots-git --noconfirm
 > ```
-
-<br>
-
-#### 📦 **AUR Packages (Install via `yay` or `paru`)**
-```bash
-yay -S swayfx waybar-module-pacman-updates-git wlroots-git --noconfirm
-```
-or  
-```bash
-paru -S swayfx waybar-module-pacman-updates-git wlroots-git --noconfirm
-```
 
 <br>
 
