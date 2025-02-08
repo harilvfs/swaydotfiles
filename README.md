@@ -111,7 +111,8 @@
 
 ### 🎯 Related Projects  
 > [!TIP]  
-> Want a better **`Bash prompt` , `Zsh setup` , or other system enhancements**?  
+> Want a better **`Bash prompt` , `Zsh setup` , or other system enhancements**?
+> 
 > Check out my **`Carch Project`**:  
 > **🔗 [Carch - Arch & Fedora Linux Automation](https://github.com/harilvfs/carch)**  
 
