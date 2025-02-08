@@ -1,6 +1,6 @@
 <div align="center">
 
-## `SwayWM Dotfiles`
+# `SwayWM Dotfiles`
 
 </div>
 
