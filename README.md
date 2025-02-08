@@ -1,5 +1,5 @@
 <p align="center">
-  <img src="https://raw.githubusercontent.com/harilvfs/assets/refs/heads/main/sway/swaywmicon.png" />
+  <img src="https://raw.githubusercontent.com/harilvfs/assets/refs/heads/main/sway/swaywmicon.png" width="50" />
 </p>
 
 <div align="center">
