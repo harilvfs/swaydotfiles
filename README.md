@@ -4,15 +4,15 @@
 
 </div>
 
-<p align="center">
+<div align="center">
   
   A clean and functional `SwayWM` setup inspired by 
   <a href="https://gitlab.com/garuda-linux/themes-and-settings/settings/garuda-sway-settings/-/tree/master">Garuda Sway Dotfiles</a>.
-</p>
+</div>
 
-<p align="center">
+<div align="center">
   <img src="http://raw.githubusercontent.com/harilvfs/assets/refs/heads/main/sway/swappy-20250209-011004.png" />
-</p>
+</div>
 
 
 > **🚀 Features**
