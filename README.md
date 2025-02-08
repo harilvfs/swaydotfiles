@@ -1,63 +1,96 @@
 <h1 align="center">SwayWM</h1>
 
-<p align="center"><strong>I've added a setup script for Sway Dependencies Installation. If you encounter any issues, please feel free to submit an issue or Contact us <a href="mailto:harilvfs@chalisehari.com.np">harilvfs@chalisehari.com.np</a></strong>
-
-<h3 align="center">Desktop</h3>
-<p align="center">
-<a> <img src="https://github.com/harilvfs/assets/blob/main/images/IMG_20240706_232523.png" alt="Garuda Sway"> </a>
-</p>
+This swaywm dotfiles are heavily inspired by [garuda sway dotfiles](https://gitlab.com/garuda-linux/themes-and-settings/settings/garuda-sway-settings/-/tree/master)
 
 > [!IMPORTANT]
-> The installation script is for `Arch` or `Arch-based systems` Report any bugs by submitting an issue.
+> Remember to install this dependencies before procedding
 
-<h2>🚀 Quick Start</h2>
-
-<h3>1.Run the Setup Script</h3>
-<p>This script is designed to install all the necessary dependencies for your Sway setup.</p>
+Dependencies
+- fastfetch  
+- fish  
+- foot  
+- nwg-drawer  
+- swappy  
+- swaylock  
+- waybar  
+- pango  
+- cairo  
+- gdk-pixbuf2  
+- json-c  
+- scdoc  
+- meson  
+- ninja  
+- pcre2  
+- gtk-layer-shell  
+- jsoncpp  
+- libsigc++  
+- libdbusmenu-gtk3  
+- libxkbcommon  
+- fmt  
+- spdlog  
+- glibmm  
+- gtkmm3  
+- alsa-utils  
+- pulseaudio  
+- libnl  
+- iw  
+- wob  
+- swaybg  
+- swayidle  
+- fuzzel  
+- otf-font-awesome  
+- ttf-jetbrains-mono  
+- ttf-nerd-fonts-symbols  
+- ttf-ubuntu-font-family  
+- wl-clipboard  
+- grim  
+- slurp  
+- mako  
+- blueberry  
+- pamixer  
+- pavucontrol  
+- gnome-keyring  
+- polkit-gnome  
+- cliphist  
+- wl-clipboard  
+- autotiling  
+- gtklock  
+- swayidle  
+- xdg-desktop-portal  
+- xdg-desktop-portal-wlr  
+- xorg-xhost  
+- sddm  
+- kvantum  
+- qt5-wayland  
+- qt6-wayland  
+- dex  
+- wf-recorder  
+- nwg-hello  
+- blueman  
+- bluez  
+- bluez-libs  
+- bluez-qt  
+- bluez-qt5  
+- bluez-tools  
+- bluez-utils  
+- alacritty  
+- kitty  
 
 ```bash
-bash <(curl -L https://raw.githubusercontent.com/harilvfs/swaydotfiles/refs/heads/main/setup.sh)
+sudo pacman -S
 ```
 
-<p><strong>What it does:</strong></p>
-<ul>
-  <li>Installs all required dependencies for the dotfiles</li>
-  <li>Applies the CyberEXS GRUB theme</li>
-  <li>Updates GRUB settings based on your system (Debian/Arch)</li>
-</ul>
-
-<h3>2. Manually Copy Dotfiles</h3>
-<p>To finalize the setup, manually clone the repository and copy the dotfiles to your <code>~/.config</code> directory:</p>
+From aur
+- swayfx
+- waybar-module-pacman-updates-git
+- wlroots-git
 
 ```bash
-git clone https://github.com/harilvfs/swaydotfiles
-cd swaydotfiles/
-cp -r * ~/.config
+yay or paru -S 
 ```
 
-<p>This ensures that your Sway setup will have the proper configurations in place.</p>
-
-<h3 align="center">Grub</h3>
-<p align="center">
-  <a><img src="https://github.com/Jacksaur/Gorgeous-GRUB/blob/main/Images/CyberEXS.png" alt="CyberEXS GRUB"></a>
-</p>
-
-<h3 align="center">Wofi From Garuda Sway</h3>
-<p align="center">
-  <a><img src="https://github.com/harilvfs/assets/blob/main/images/swappy-20240706-232843.png" alt="Wofi"></a>
-</p>
-
-<h3>🎨 Credits</h3>
-<ul>
-  <li>Wofi theme inspiration and configuration was adapted from <a href="https://github.com/yurihikari/garuda-hyprdots">yurihikari's garuda-hyprdots</a>.</li>
-</ul>
-
-<h2>💡 Customization</h2>
-<p>Feel free to tweak the configuration files to suit your preferences. You’ll find them in the following locations:</p>
-<ul>
-  <li><strong>Sway Config:</strong> <code>~/.config/sway/config</code></li>
-  <li><strong>Waybar Config:</strong> <code>~/.config/waybar/config</code></li>
-  <li><strong>Other Dotfiles:</strong> <code>~/.config/*</code></li>
-</ul>
+> [!NOTE]
+> Default keybind for terminal is super+t for launcher super+d for filemanager super+e
+>  Check for more [here](https://github.com/harilvfs/swaydotfiles/blob/main/sway/config.d/default)
 
 
