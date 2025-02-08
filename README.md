@@ -59,11 +59,14 @@ sway reload
 
 
 3️⃣ **(Optional) Clone Wallpapers**  
-If you want the same wallpapers, clone my wallpaper repository:  
-```bash
-git clone https://github.com/harilvfs/wallpapers ~/Pictures
-```
-Then apply wallpapers using **Azote**.
+
+> [!TIP]
+> If you want the same wallpapers, clone my wallpaper repository:
+> ```bash
+> git clone https://github.com/harilvfs/wallpapers ~/Pictures
+> ```
+>
+> Then apply wallpapers using **Azote**.
 
 
 ### 📌 Dependencies  
