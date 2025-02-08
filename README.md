@@ -18,11 +18,13 @@
 - Optimized for **Wayland**  
 - Lightweight and efficient  
 
+<br>
 
 > [!CAUTION]
 > **I am NOT responsible for any system issues or data loss.**  
 > Please review the setup script before running it!  
 
+<br>
 
 ### 🛠️ Installation  
 
@@ -33,7 +35,6 @@ If you're using **Arch Linux**, you can run the automated setup script:
 bash <(curl -L https://raw.githubusercontent.com/harilvfs/swaydotfiles/refs/heads/main/setup.sh)
 ```
 
-
 > [!IMPORTANT]
 > **Make sure to install `gum` and `figlet` before running the script!**  
 > They are required for the interactive prompts.  
@@ -42,6 +43,7 @@ bash <(curl -L https://raw.githubusercontent.com/harilvfs/swaydotfiles/refs/head
 sudo pacman -S gum figlet --noconfirm
 ```
 
+<br>
 
 ### 🔹 **Manual Setup**  
 1️⃣ **Clone the Dotfiles**  
@@ -51,14 +53,12 @@ cd swaydotiles/
 # Then copy the configuration files to their appropriate directories as shown in the repository's dotfiles.
 ```
 
-
 2️⃣ **Reload SwayWM**  
 ```bash
 sway reload
 ```
 
-
-3️⃣ **(Optional) Clone Wallpapers**  
+<br>
 
 > [!TIP]
 > If you want the same wallpapers, clone my wallpaper repository:
@@ -68,6 +68,7 @@ sway reload
 >
 > Then apply wallpapers using **Azote**.
 
+<br>
 
 ### 📌 Dependencies  
 Make sure you install the required dependencies before proceeding.  
@@ -76,7 +77,6 @@ Make sure you install the required dependencies before proceeding.
 ```bash
 sudo pacman -S fastfetch fish foot nwg-drawer swappy swaylock waybar pango cairo gdk-pixbuf2 json-c scdoc meson ninja pcre2 gtk-layer-shell jsoncpp libsigc++ libdbusmenu-gtk3 libxkbcommon fmt spdlog glibmm gtkmm3 alsa-utils pulseaudio libnl iw wob swaybg swayidle fuzzel otf-font-awesome ttf-jetbrains-mono ttf-nerd-fonts-symbols ttf-ubuntu-font-family wl-clipboard grim slurp mako blueberry pamixer pavucontrol gnome-keyring polkit-gnome cliphist wl-clipboard autotiling gtklock swayidle xdg-desktop-portal xdg-desktop-portal-wlr xorg-xhost sddm kvantum qt5-wayland qt6-wayland dex wf-recorder nwg-hello blueman bluez bluez-libs bluez-qt bluez-qt5 bluez-tools bluez-utils alacritty kitty --noconfirm
 ```
-
 
 #### 📦 **AUR Packages (Install via `yay` or `paru`)**
 ```bash
@@ -87,6 +87,7 @@ or
 paru -S swayfx waybar-module-pacman-updates-git wlroots-git --noconfirm
 ```
 
+<br>
 
 ### ⌨️ Keybindings  
 > [!TIP]  
@@ -98,12 +99,14 @@ paru -S swayfx waybar-module-pacman-updates-git wlroots-git --noconfirm
 
 Check more keybindings **[here](https://github.com/harilvfs/swaydotfiles/blob/main/sway/config.d/default)**.  
 
+<br>
 
 ### 📜 Additional Notes  
 > [!NOTE]
 > This setup is optimized for **Arch Linux**, but might work on other distros with some modifications.  
 > Ensure you have **Wayland-compatible** applications for the best experience.  
 
+<br>
 
 ### 🎯 Related Projects  
 > [!TIP]  
@@ -111,6 +114,7 @@ Check more keybindings **[here](https://github.com/harilvfs/swaydotfiles/blob/ma
 > Check out my **Carch Project**:  
 > **🔗 [Carch - Arch & Fedora Linux Automation](https://github.com/harilvfs/carch)**  
 
+<br>
 
 ### 🎯 Credits  
 - Inspired by **[Garuda Sway Dotfiles](https://gitlab.com/garuda-linux/themes-and-settings/settings/garuda-sway-settings/-/tree/master)**  
