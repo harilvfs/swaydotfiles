@@ -94,8 +94,6 @@
 > paru -S swayfx waybar-module-pacman-updates-git wlroots-git --noconfirm
 > ```
 
-<br>
-
 ### ⌨️ Keybindings  
 > [!TIP]  
 > Default Keybindings for essential applications:
@@ -106,22 +104,16 @@
 >
 > Check more keybindings **[here](https://github.com/harilvfs/swaydotfiles/blob/main/sway/config.d/default)**.  
 
-<br>
-
 ### 📜 Additional Notes  
 > [!NOTE]
 > This setup is optimized for **`Arch Linux`**, but might work on other distros with some modifications.  
 > Ensure you have **`Wayland-compatible`** applications for the best experience.  
 
-<br>
-
 ### 🎯 Related Projects  
 > [!TIP]  
-> Want a better **`Bash prompt`, `Zsh setup`, or other system enhancements**?  
+> Want a better **`Bash prompt` , `Zsh setup` , or other system enhancements**?  
 > Check out my **`Carch Project`**:  
 > **🔗 [Carch - Arch & Fedora Linux Automation](https://github.com/harilvfs/carch)**  
-
-<br>
 
 ### 🎯 Credits  
 > - **Inspired by** **[Garuda Sway Dotfiles](https://gitlab.com/garuda-linux/themes-and-settings/settings/garuda-sway-settings/-/tree/master)**  
