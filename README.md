@@ -46,7 +46,7 @@
 
 > **🔹 Manual Setup**  
 > **1️⃣ Clone the Dotfiles**  
->```javascript
+>```rust
 > git clone https://github.com/harilvfs/swaydotfiles.git ~/swaydotfiles
 > cd swaydotiles/
 > # Then copy the configuration files to their appropriate directories as shown in the repository's dotfiles.
