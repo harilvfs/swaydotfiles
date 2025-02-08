@@ -1,4 +1,4 @@
-<h1 align="center">`SwayWM Dotfiles`</h1>
+## `SwayWM Dotfiles`
 
 <p align="center">
   A clean and functional `SwayWM` setup inspired by 
