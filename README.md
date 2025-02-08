@@ -1,3 +1,7 @@
+<p align="center">
+  <img src="https://raw.githubusercontent.com/harilvfs/assets/refs/heads/main/sway/swaywmicon.png" />
+</p>
+
 <div align="center">
 
 # `SwayWM Dotfiles`
