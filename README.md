@@ -94,12 +94,12 @@
 ### ⌨️ Keybindings  
 > [!TIP]  
 > Default Keybindings for essential applications:
-
-- **Terminal:** `Super + T`  
-- **Launcher:** `Super + D`  
-- **File Manager:** `Super + E`  
-
-Check more keybindings **[here](https://github.com/harilvfs/swaydotfiles/blob/main/sway/config.d/default)**.  
+> 
+> - **Terminal:** `Super + T`  
+> - **Launcher:** `Super + D`  
+> - **File Manager:** `Super + E`  
+>
+> Check more keybindings **[here](https://github.com/harilvfs/swaydotfiles/blob/main/sway/config.d/default)**.  
 
 <br>
 
@@ -119,6 +119,6 @@ Check more keybindings **[here](https://github.com/harilvfs/swaydotfiles/blob/ma
 <br>
 
 ### 🎯 Credits  
-- Inspired by **[Garuda Sway Dotfiles](https://gitlab.com/garuda-linux/themes-and-settings/settings/garuda-sway-settings/-/tree/master)**  
-- Maintained by [@harilvfs](https://github.com/harilvfs)  
+> - Inspired by **[Garuda Sway Dotfiles](https://gitlab.com/garuda-linux/themes-and-settings/settings/garuda-sway-settings/-/tree/master)**  
+> - Maintained by [@harilvfs](https://github.com/harilvfs)  
 
