@@ -4,6 +4,9 @@ iatest=$(expr index "$-" i)
 #######################################################
 # SOURCED ALIAS'S AND SCRIPTS BY zachbrowne.me
 #######################################################
+#if [ -f /usr/bin/fastfetch ]; then
+#	fastfetch
+#fi
 
 # Source global definitions
 if [ -f /etc/bashrc ]; then
@@ -225,6 +228,24 @@ alias mkgz='tar -cvzf'
 alias untar='tar -xvf'
 alias unbz2='tar -xvjf'
 alias ungz='tar -xvzf'
+
+# pacman and yay
+alias pacsyu='sudo pacman -Syu'                  # update only standard pkgs
+alias pacsyyu='sudo pacman -Syyu'                # Refresh pkglist & update standard pkgs
+alias parsua='paru -Sua --noconfirm'             # update only AUR pkgs (paru)
+alias parsyu='paru -Syu --noconfirm'             # update standard pkgs and AUR pkgs (paru)
+alias unlock='sudo rm /var/lib/pacman/db.lck'    # remove pacman lock
+
+# gpg encryption
+# verify signature for isos
+alias gpg-check="gpg2 --keyserver-options auto-key-retrieve --verify"
+# receive the key of a developer
+alias gpg-retrieve="gpg2 --keyserver-options auto-key-retrieve --receive-keys"
+
+# change your default USER shell
+alias tobash="sudo chsh $USER -s /bin/bash && echo 'Log out and log back in for change to take effect.'"
+alias tozsh="sudo chsh $USER -s /bin/zsh && echo 'Log out and log back in for change to take effect.'"
+alias tofish="sudo chsh $USER -s /bin/fish && echo 'Log out and log back in for change to take effect.'"
 
 # Show all logs in /var/log
 alias logs="sudo find /var/log -type f -exec file {} \; | grep 'text' | cut -d' ' -f1 | sed -e's/:$//g' | grep -v '[0-9]$' | xargs tail -f"
@@ -517,7 +538,6 @@ function whatsmyip () {
     curl -s ifconfig.me
 }
 
-# View Apache logs
 apachelog() {
 	if [ -f /etc/httpd/conf/httpd.conf ]; then
 		cd /var/log/httpd && ls -xAh && multitail --no-repeat -c -s 2 /var/log/httpd/*_log
@@ -634,8 +654,24 @@ export PATH=$PATH:"$HOME/.local/bin:$HOME/.cargo/bin:/var/lib/flatpak/exports/bi
 
 eval "$(starship init bash)"
 eval "$(zoxide init bash)"
- 
-nitch
+
+#if [ -z "$TMUX" ]; then
+#   tmux attach -d || tmux new
+#fi
 
 alias termdown="termdown --title Countdown --time-format %H:%M:%S --text \"T i m e i s u p\""
+
+#if [[ -z $DISPLAY ]] && [[ $(tty) = /dev/tty1 ]]; then
+#    exec startx
+#fi
+
+# Display Pokemon
+pokemon-colorscripts --no-title -r 1,3,6
+
+# fzf
+fzf_cd() {
+  local dir
+  dir=$(find . -maxdepth 3 -type d | fzf) && cd "$dir"
+}
+alias cdf="fzf_cd"
 
