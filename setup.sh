@@ -16,16 +16,46 @@ command_exists() {
     command -v "$1" &>/dev/null
 }
 
-install_aur_helper() {
-    if ! command_exists yay && ! command_exists paru; then
-        print_message $GREEN "Installing yay as AUR helper..."
-        git clone https://aur.archlinux.org/yay.git /tmp/yay
-        cd /tmp/yay || exit
-        makepkg -si --noconfirm
-        cd ..
-        rm -rf /tmp/yay
+fzf_confirm() {
+    local prompt="$1"
+    local options=("Yes" "No")
+    local selected=$(printf "%s\n" "${options[@]}" | fzf --prompt="$prompt " --height=10 --layout=reverse --border)
+    
+    if [[ "$selected" == "Yes" ]]; then
+        return 0
     else
-        print_message $YELLOW "AUR helper (yay or paru) already installed."
+        return 1
+    fi
+}
+
+install_aur_helper() {
+    if ! command -v yay >/dev/null 2>&1 && ! command -v paru >/dev/null 2>&1; then
+        print_message $GREEN "Installing yay as AUR helper..."
+        
+        sudo pacman -S --needed base-devel git --noconfirm
+        
+        temp_dir=$(mktemp -d)
+        cd "$temp_dir" || { print_message $RED "Failed to create temporary directory"; return 1; }
+        
+        git clone https://aur.archlinux.org/yay.git
+        cd yay || { print_message $RED "Failed to enter yay directory"; return 1; }
+        makepkg -si --noconfirm
+        
+        cd "$OLDPWD" || true
+        rm -rf "$temp_dir"
+        
+        if command -v yay >/dev/null 2>&1; then
+            print_message $GREEN "yay installed successfully."
+        else
+            print_message $RED "Failed to install yay."
+            return 1
+        fi
+    else
+        if command -v yay >/dev/null 2>&1; then
+            print_message $YELLOW "AUR helper (yay) already installed."
+        elif command -v paru >/dev/null 2>&1; then
+            print_message $YELLOW "AUR helper (paru) already installed."
+        fi
     fi
 }
 
@@ -71,7 +101,7 @@ manage_dotfiles() {
     local backup_dir="$3"
 
     if [ -d "$repo_dir" ]; then
-        if gum confirm "Existing dotfiles detected. Overwrite?"; then
+        if fzf_confirm "Existing dotfiles detected. Overwrite?"; then
             rm -rf "$repo_dir"
         else
             print_message $YELLOW "Skipping dotfiles cloning."
@@ -86,7 +116,7 @@ manage_dotfiles() {
     for config in "$repo_dir"/*; do
         local config_name=$(basename "$config")
         if [ -e "$HOME/.config/$config_name" ]; then
-            if gum confirm "Existing config $config_name detected. Backup?"; then
+            if fzf_confirm "Existing config $config_name detected. Backup?"; then
                 mv "$HOME/.config/$config_name" "$backup_dir/"
             fi
         fi
@@ -109,7 +139,7 @@ manage_themes_icons() {
     local repo_name=$(basename "$repo_url" .git)
 
     if [ -d "$target_dir/$repo_name" ]; then
-        if gum confirm "Existing $repo_name detected. Overwrite?"; then
+        if fzf_confirm "Existing $repo_name detected. Overwrite?"; then
             rm -rf "$target_dir/$repo_name"
         else
             print_message $YELLOW "Skipping $repo_name cloning."
@@ -122,10 +152,14 @@ manage_themes_icons() {
 
 print_message $BLUE "$(figlet -f slant "SwayWM")"
 
+print_message " "
+
 print_message $BLUE "If the setup fails, please manually use the dotfiles from:
 https://github.com/harilvfs/swaydotfiles"
 
-if ! gum confirm "Continue with Sway setup?"; then
+print_message $YELLOW"----------------------------------------"
+
+if ! fzf_confirm "Continue with Sway setup?"; then
     print_message $RED "Setup aborted by the user."
     exit 1
 fi
@@ -145,7 +179,7 @@ install_packages "${REQUIRED_PKGS[@]}"
 
 install_aur_helper
 
-PACMAN_PKGS=(fastfetch fish foot nwg-drawer swappy swaylock waybar pango cairo gdk-pixbuf2 json-c scdoc meson ninja pcre2 gtk-layer-shell jsoncpp libsigc++ libdbusmenu-gtk3 libxkbcommon fmt spdlog glibmm gtkmm3 alsa-utils pulseaudio libnl iw wob swaybg swayidle fuzzel otf-font-awesome ttf-jetbrains-mono ttf-nerd-fonts-symbols ttf-ubuntu-font-family wl-clipboard grim slurp mako blueberry pamixer pavucontrol gnome-keyring polkit-gnome cliphist wl-clipboard autotiling gtklock swayidle xdg-desktop-portal xdg-desktop-portal-wlr xorg-xhost sddm kvantum qt5-wayland qt6-wayland dex wf-recorder nwg-hello blueman bluez bluez-libs bluez-qt bluez-qt5 bluez-tools bluez-utils alacritty kitty)
+PACMAN_PKGS=(fastfetch fish foot nwg-drawer bluetui ttf-jetbrains-mono ttf-jetbrains-mono-nerd swappy swaylock waybar pango cairo gdk-pixbuf2 json-c scdoc meson ninja pcre2 gtk-layer-shell jsoncpp libsigc++ libdbusmenu-gtk3 libxkbcommon fmt spdlog glibmm gtkmm3 alsa-utils pipewire-pulse libnl iw wob swaybg swayidle fuzzel otf-font-awesome ttf-jetbrains-mono ttf-nerd-fonts-symbols ttf-ubuntu-font-family wl-clipboard grim slurp mako blueberry pamixer pavucontrol gnome-keyring polkit-gnome cliphist wl-clipboard autotiling gtklock swayidle xdg-desktop-portal xdg-desktop-portal-wlr xorg-xhost sddm kvantum qt5-wayland qt6-wayland dex wf-recorder nwg-hello blueman bluez bluez-libs bluez-qt bluez-qt5 bluez-tools bluez-utils alacritty kitty)
 install_packages "${PACMAN_PKGS[@]}"
 
 YAY_PKGS=(swayfx waybar-module-pacman-updates-git wlroots-git)
@@ -163,7 +197,7 @@ ICON_DIR="$HOME/.icons"
 manage_themes_icons "$THEME_REPO" "$THEME_DIR"
 manage_themes_icons "$ICON_REPO" "$ICON_DIR"
 
-if gum confirm "Do you want additional wallpapers?"; then
+if fzf_confirm "Do you want additional wallpapers? [Recommended]"; then
     WALLPAPER_REPO="https://github.com/harilvfs/wallpapers"
     WALLPAPER_DIR="$HOME/Pictures/wallpapers"
     manage_themes_icons "$WALLPAPER_REPO" "$WALLPAPER_DIR"
@@ -201,7 +235,7 @@ apply_sddm_theme() {
 
 if [ -d "$theme_dir" ]; then
     print_message "$YELLOW" "$theme_dir already exists."
-    if gum confirm "Do you want to remove the existing theme and continue?"; then
+    if fzf_confirm "Do you want to remove the existing theme and continue?"; then
         sudo rm -rf "$theme_dir"
         print_message "$GREEN" "$theme_dir removed."
     else
@@ -287,4 +321,3 @@ echo "Sddm theme applied, service started, and configuration updated successfull
 
 print_message $BLUE "Default keybindings: Super+Enter (Terminal), Super+D (App Launcher)"
 print_message $GREEN "SwayWM setup complete!"
-
