@@ -1,4 +1,6 @@
-#!/bin/bash
+#!/usr/bin/env bash
+
+# Currently not compatible with Fedora. SwayWM is supported for Arch-based systems only.
 
 clear
 
@@ -174,14 +176,14 @@ if ! fzf_confirm "Continue with Sway setup?"; then
     exit 1
 fi
 
-if [ -f /etc/fedora-release ]; then
-    print_message $RED "Sway setup for Fedora is not finalized due to missing dependencies and runtime errors. Exiting."
-    exit 1
-elif [ -f /etc/arch-release ]; then
-    print_message $GREEN "Arch Linux detected. Proceeding with setup..."
+if command -v pacman &>/dev/null; then
+   print_message $GREEN "Arch Linux detected. Proceeding with setup..."
+elif command -v dnf &>/dev/null; then
+   print_message $RED "Sway setup for Fedora is not finalized due to missing dependencies and runtime errors. Exiting."
+   exit 1
 else
-    print_message $RED "Unsupported distribution. Exiting."
-    exit 1
+   print_message $RED "Unsupported distribution. Exiting."
+   exit 1
 fi
 
 REQUIRED_PKGS=(git base-devel make less)
@@ -223,20 +225,13 @@ is_sddm_installed() {
 }
 
 install_sddm() {
-    if [ -f /etc/os-release ]; then
-        . /etc/os-release
-        case $ID in
-            arch*)
-                sudo pacman -S --noconfirm sddm
-                ;;
-            fedora*)
-                sudo dnf install -y sddm
-                ;;
-            *)
-                echo "Unsupported distribution."
-                exit 1
-                ;;
-        esac
+    if command -v pacman &> /dev/null; then
+        sudo pacman -S --noconfirm sddm
+    elif command -v dnf &> /dev/null; then
+        sudo dnf install -y sddm
+    else
+        echo "Unsupported distribution."
+        exit 1
     fi
 }
 
@@ -285,17 +280,13 @@ configure_sddm_theme() {
 enable_start_sddm() {
     echo "Checking for existing display managers..."
 
-    if [[ -f /etc/os-release ]]; then
-        . /etc/os-release
-    fi
-
     if command -v gdm &> /dev/null; then
         echo "GDM detected. Removing GDM..."
         sudo systemctl stop gdm
         sudo systemctl disable gdm --now
-        if [[ "$ID" == "arch" || "$ID_LIKE" == *"arch"* ]]; then
+        if command -v pacman &> /dev/null; then
             sudo pacman -Rns --noconfirm gdm
-        elif [[ "$ID" == "fedora" ]]; then
+        elif command -v dnf &> /dev/null; then
             sudo dnf remove -y gdm
         fi
     fi
@@ -304,9 +295,9 @@ enable_start_sddm() {
         echo "LightDM detected. Removing LightDM..."
         sudo systemctl stop lightdm
         sudo systemctl disable lightdm --now
-        if [[ "$ID" == "arch" || "$ID_LIKE" == *"arch"* ]]; then
+        if command -v pacman &> /dev/null; then
             sudo pacman -Rns --noconfirm lightdm
-        elif [[ "$ID" == "fedora" ]]; then
+        elif command -v dnf &> /dev/null; then
             sudo dnf remove -y lightdm
         fi
     fi
