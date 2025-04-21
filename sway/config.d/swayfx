@@ -2,13 +2,13 @@
 
 ### Appearance
 # window corner radius in px
-corner_radius 6
+corner_radius 4
 
 # Window background blur
 blur enable
 blur_xray off
-blur_passes 2
-blur_radius 2
+blur_passes 4
+blur_radius 8
 
 shadows enable
 shadows_on_csd off
@@ -24,4 +24,4 @@ dim_inactive_colors.unfocused #000000FF
 dim_inactive_colors.urgent #900000FF
 
 # Move minimized windows into Scratchpad (enable|disable)
-scratchpad_minimize disable
+scratchpad_minimize enable

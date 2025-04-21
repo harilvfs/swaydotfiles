@@ -11,7 +11,7 @@ set {
     $right l
 
     # Default terminal emulator
-    $term  alacritty
+    $term kitty 
 
     # Application launcher
     $launcher fuzzel
@@ -215,9 +215,9 @@ bindsym {
     # Launch the file explorer
     $mod+e exec thunar
     # Launch the browser
-    $mod+b exec firedragon
+    $mod+b exec thorium-browser 
     # Launch the text editor
-    $mod+t exec mousepad
+    $mod+t exec neovim
     # Launch the calculator
     $mod+c exec galculator
     # Launch the clipboard manager
