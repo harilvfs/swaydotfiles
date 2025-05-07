@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 
-# Currently not compatible with Fedora. SwayWM is supported for Arch-based systems only.
+# This Script is Currently not compatible with Fedora. Only supported for Arch-based systems only.
 
 clear
 
@@ -18,10 +18,24 @@ command_exists() {
     command -v "$1" &>/dev/null
 }
 
+FZF_COMMON="--layout=reverse \
+            --border=bold \
+            --border=rounded \
+            --margin=5% \
+            --color=dark \
+            --info=inline \
+            --header-first \
+            --bind change:top"
+
 fzf_confirm() {
     local prompt="$1"
     local options=("Yes" "No")
-    local selected=$(printf "%s\n" "${options[@]}" | fzf --prompt="$prompt " --height=10 --layout=reverse --border)
+    local selected=$(printf "%s\n" "${options[@]}" | fzf ${FZF_COMMON} \
+                                                     --height=40% \
+                                                     --prompt="$prompt " \
+                                                     --header="Confirm" \
+                                                     --pointer="➤" \
+                                                     --color='fg:white,fg+:green,bg+:black,pointer:green')
     
     if [[ "$selected" == "Yes" ]]; then
         return 0
@@ -162,19 +176,10 @@ manage_themes_icons() {
     git clone "$repo_url" "$target_dir/$repo_name"
 }
 
-print_message $BLUE "$(figlet -f slant "SwayWM")"
-
-print_message " "
-
 print_message $BLUE "If the setup fails, please manually use the dotfiles from:
 https://github.com/harilvfs/swaydotfiles"
 
 print_message $YELLOW"----------------------------------------"
-
-if ! fzf_confirm "Continue with Sway setup?"; then
-    print_message $RED "Setup aborted by the user."
-    exit 1
-fi
 
 if command -v pacman &>/dev/null; then
    print_message $GREEN "Arch Linux detected. Proceeding with setup..."
