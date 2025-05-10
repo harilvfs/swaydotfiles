@@ -90,11 +90,6 @@
 >
 > Check more keybindings **[here](https://github.com/harilvfs/swaydotfiles/blob/main/sway/config.d/default)**.  
 
-### 📜 Additional Notes  
-> [!NOTE]
-> This setup is optimized for **`Arch Linux`**, but might work on other distros with some modifications.  
-> Ensure you have **`Wayland-compatible`** applications for the best experience.  
-
 ### 🎯 Related Projects  
 > [!TIP]  
 > Want a better **`Bash prompt` , `Zsh setup` , or other system enhancements**?
