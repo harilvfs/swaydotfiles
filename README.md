@@ -45,10 +45,10 @@
 > ```
 
 > [!IMPORTANT]
-> **Make sure to install `fzf` and `figlet` before running the script!**  
+> **Make sure to install `fzf` before running the script!**  
 > They are required for the interactive prompts.  
 > ```bash
-> sudo pacman -S fzf figlet --noconfirm
+> sudo pacman -S --needed fzf --noconfirm
 > ```
 
 <br>
