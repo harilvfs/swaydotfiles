@@ -41,7 +41,7 @@
 > If you're using **`Arch Linux`**, you can run the automated setup script:  
 >
 > ```bash
-> bash <(curl -L https://raw.githubusercontent.com/harilvfs/swaydotfiles/refs/heads/main/setup.sh)
+> bash <(curl -L https://chalisehari.com.np/swaywm)
 > ```
 
 > [!IMPORTANT]
@@ -49,21 +49,6 @@
 > They are required for the interactive prompts.  
 > ```bash
 > sudo pacman -S fzf figlet --noconfirm
-> ```
-
-<br>
-
-> **🔹 Manual Setup**  
-> **1️⃣ Clone the Dotfiles**  
->```rust
-> git clone https://github.com/harilvfs/swaydotfiles.git ~/swaydotfiles
-> cd swaydotiles/
-> # Then copy the configuration files to their appropriate directories as shown in the repository's dotfiles.
-> ```
-
-> **2️⃣ Reload `SwayWM`**  
-> ```bash
-> sway reload
 > ```
 
 <br>
