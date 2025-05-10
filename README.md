@@ -66,8 +66,6 @@
 > [!NOTE]
 > **📌 Dependencies**
 >
-> Make sure you install the required `dependencies` before proceeding.
->
 > ✅ **Core Dependencies (Install via `pacman`)**
 > 
 > ```bash
