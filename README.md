@@ -46,7 +46,7 @@
 
 > [!IMPORTANT]
 > **Make sure to install `fzf` before running the script!**  
-> It are required for the interactive prompts.  
+> It is required for the interactive prompts.  
 > ```bash
 > sudo pacman -S --needed fzf --noconfirm
 > ```
