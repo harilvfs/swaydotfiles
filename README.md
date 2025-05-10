@@ -24,7 +24,6 @@
 > - Custom **`Waybar`** with useful modules
 > - Preconfigured **`Keybindings`** for better workflow  
 > - **`Autotiling`** support for automatic window management  
-> - Optimized for **`Wayland`**  
 > - Lightweight and efficient  
 
 <br>
