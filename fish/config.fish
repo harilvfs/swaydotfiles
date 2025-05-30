@@ -33,6 +33,7 @@ alias po '$aurhelper -Qtdq | $aurhelper -Rns -'
 alias vc 'code'
 alias vim 'nvim'
 alias aa 'startx'
+alias rm 'trash -v'
 
 alias .. 'cd ..'
 alias ... 'cd ../..'
