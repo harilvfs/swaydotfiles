@@ -34,6 +34,7 @@ alias vc 'code'
 alias vim 'nvim'
 alias aa 'startx'
 alias rm 'trash -v'
+alias hx 'helix'
 
 alias .. 'cd ..'
 alias ... 'cd ../..'
