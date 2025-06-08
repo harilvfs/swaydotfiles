@@ -121,6 +121,40 @@ install_aur_packages() {
     fi
 }
 
+install_pokemon_colorscripts() {
+    print_message $BLUE "Installing Pokémon Color Scripts..."
+
+    if command -v pokemon-colorscripts >/dev/null 2>&1; then
+        print_message $YELLOW "Pokémon Color Scripts already installed."
+        return 0
+    fi
+
+    local aur_helper=""
+    if command -v yay >/dev/null 2>&1; then
+        aur_helper="yay"
+    elif command -v paru >/dev/null 2>&1; then
+        aur_helper="paru"
+    else
+        print_message $RED "No AUR helper found. Installing yay first..."
+        install_aur_helper
+        if command -v yay >/dev/null 2>&1; then
+            aur_helper="yay"
+        else
+            print_message $RED "Failed to install AUR helper."
+            return 1
+        fi
+    fi
+
+    print_message $CYAN "Installing Pokémon Color Scripts from AUR..."
+    if $aur_helper -S --noconfirm pokemon-colorscripts-git; then
+        print_message $GREEN "Pokémon Color Scripts installed successfully!"
+        print_message $BLUE "You can now use 'pokemon-colorscripts -r' to display a random Pokémon!"
+    else
+        print_message $RED "Failed to install Pokémon Color Scripts."
+        return 1
+    fi
+}
+
 manage_dotfiles() {
     local repo_url="$1"
     local repo_dir="$2"
@@ -162,22 +196,50 @@ manage_dotfiles() {
 manage_themes_icons() {
     local repo_url="$1"
     local target_dir="$2"
-    local repo_name=$(basename "$repo_url" .git)
+    local temp_dir
+    local repo_name
 
-    if [ -d "$target_dir/$repo_name" ]; then
-        if fzf_confirm "Existing $repo_name detected. Overwrite?"; then
-            rm -rf "$target_dir/$repo_name"
-        else
-            print_message $YELLOW "Skipping $repo_name cloning."
-            return
+    temp_dir=$(mktemp -d)
+    repo_name=$(basename "$repo_url" .git)
+
+    print_message $CYAN "Cloning $repo_name into temporary directory..."
+    git clone "$repo_url" "$temp_dir/$repo_name" || {
+        print_message $RED "Failed to clone $repo_name"
+        return 1
+    }
+
+    mkdir -p "$target_dir"
+
+    print_message $GREEN "Copying contents to $target_dir..."
+    for item in "$temp_dir/$repo_name"/*; do
+        if [ -d "$item" ]; then
+            local name=$(basename "$item")
+            if [ -d "$target_dir/$name" ]; then
+                if fzf_confirm "Existing $name detected in $target_dir. Overwrite?"; then
+                    rm -rf "$target_dir/$name"
+                else
+                    print_message $YELLOW "Skipping $name"
+                    continue
+                fi
+            fi
+            cp -r "$item" "$target_dir/"
         fi
-    fi
+    done
 
-    git clone "$repo_url" "$target_dir/$repo_name"
+    rm -rf "$temp_dir"
+    print_message $GREEN "$repo_name installed to $target_dir"
 }
 
-print_message $BLUE "If the setup fails, please manually use the dotfiles from:
-https://github.com/harilvfs/swaydotfiles"
+if ! command -v fzf &> /dev/null; then
+    echo -e "${RED}${BOLD}Error: fzf is not installed${NC}"
+    echo -e "${YELLOW}Please install fzf before running this script:${NC}"
+    echo -e "${CYAN}  • Fedora: ${NC}sudo dnf install fzf"
+    echo -e "${CYAN}  • Arch Linux: ${NC}sudo pacman -S fzf"
+    exit 1
+fi
+
+print_message $TEAL "If the setup fails, please manually use the dotfiles from:
+https://github.com/harilvfs/swaydotfiles" $NC
 
 print_message $YELLOW"----------------------------------------"
 
@@ -196,11 +258,15 @@ install_packages "${REQUIRED_PKGS[@]}"
 
 install_aur_helper
 
-PACMAN_PKGS=(fastfetch fish foot nwg-drawer bluetui ttf-jetbrains-mono ttf-jetbrains-mono-nerd swappy swaylock waybar pango cairo gdk-pixbuf2 json-c scdoc meson ninja pcre2 gtk-layer-shell jsoncpp libsigc++ libdbusmenu-gtk3 libxkbcommon fmt spdlog glibmm gtkmm3 alsa-utils pipewire-pulse libnl iw wob swaybg swayidle fuzzel otf-font-awesome ttf-jetbrains-mono ttf-nerd-fonts-symbols ttf-ubuntu-font-family wl-clipboard grim slurp mako blueberry pamixer pavucontrol gnome-keyring polkit-gnome cliphist wl-clipboard autotiling gtklock swayidle xdg-desktop-portal xdg-desktop-portal-wlr xorg-xhost sddm kvantum qt5-wayland qt6-wayland dex wf-recorder nwg-hello blueman bluez bluez-libs bluez-qt bluez-qt5 bluez-tools bluez-utils alacritty kitty azote)
+PACMAN_PKGS=(fastfetch fish foot nwg-drawer bluetui ttf-jetbrains-mono ttf-jetbrains-mono-nerd swappy swaylock waybar pango cairo gdk-pixbuf2 json-c scdoc meson ninja pcre2 gtk-layer-shell jsoncpp libsigc++ libdbusmenu-gtk3 libxkbcommon fmt spdlog glibmm gtkmm3 alsa-utils pipewire-pulse libnl iw wob swaybg swayidle fuzzel otf-font-awesome ttf-jetbrains-mono ttf-nerd-fonts-symbols ttf-ubuntu-font-family wl-clipboard grim slurp mako blueberry pamixer pavucontrol gnome-keyring polkit-gnome cliphist wl-clipboard autotiling gtklock swayidle xdg-desktop-portal xdg-desktop-portal-wlr xorg-xhost sddm kvantum qt5-wayland qt6-wayland dex wf-recorder nwg-hello blueman bluez bluez-libs bluez-qt bluez-qt5 bluez-tools bluez-utils alacritty kitty azote xorg-xwayland)
 install_packages "${PACMAN_PKGS[@]}"
 
 AUR_PKGS=(swayfx waybar-module-pacman-updates-git wlroots-git)
 install_aur_packages "${AUR_PKGS[@]}"
+
+if fzf_confirm "Do you want to install Pokémon Color Scripts? [Fun terminal colors]"; then
+    install_pokemon_colorscripts
+fi
 
 DOTFILES_REPO="https://github.com/harilvfs/swaydotfiles"
 DOTFILES_DIR="$HOME/swaydotfiles"
@@ -230,14 +296,8 @@ is_sddm_installed() {
 }
 
 install_sddm() {
-    if command -v pacman &> /dev/null; then
-        sudo pacman -S --noconfirm sddm
-    elif command -v dnf &> /dev/null; then
-        sudo dnf install -y sddm
-    else
-        echo "Unsupported distribution."
-        exit 1
-    fi
+    print_message $GREEN "Installing SDDM..."
+    sudo pacman -S --noconfirm sddm
 }
 
 apply_sddm_theme() {
@@ -283,47 +343,55 @@ configure_sddm_theme() {
 }
 
 enable_start_sddm() {
-    echo "Checking for existing display managers..."
+    print_message $GREEN "Checking for existing display managers..."
 
     if command -v gdm &> /dev/null; then
-        echo "GDM detected. Removing GDM..."
+        print_message $YELLOW "GDM detected. Removing GDM..."
         sudo systemctl stop gdm
         sudo systemctl disable gdm --now
-        if command -v pacman &> /dev/null; then
-            sudo pacman -Rns --noconfirm gdm
-        elif command -v dnf &> /dev/null; then
-            sudo dnf remove -y gdm
-        fi
+        sudo pacman -Rns --noconfirm gdm
     fi
 
     if command -v lightdm &> /dev/null; then
-        echo "LightDM detected. Removing LightDM..."
+        print_message $YELLOW "LightDM detected. Removing LightDM..."
         sudo systemctl stop lightdm
         sudo systemctl disable lightdm --now
-        if command -v pacman &> /dev/null; then
-            sudo pacman -Rns --noconfirm lightdm
-        elif command -v dnf &> /dev/null; then
-            sudo dnf remove -y lightdm
+        sudo pacman -Rns --noconfirm lightdm
+    fi
+
+    if systemctl is-enabled greetd &> /dev/null; then
+        print_message $YELLOW "Greetd detected. Stopping and disabling Greetd..."
+        sudo systemctl stop greetd
+        sudo systemctl disable greetd --now
+        if pacman -Qq greetd &> /dev/null; then
+            print_message $CYAN "Removing Greetd package..."
+            sudo pacman -Rns --noconfirm greetd
         fi
     fi
 
-    echo "Enabling and starting the sddm service..."
+    print_message $GREEN "Enabling and starting the SDDM service..."
     sudo systemctl enable sddm --now
 }
 
-if ! is_sddm_installed; then
-    install_sddm
+if fzf_confirm "Do you want to install and configure SDDM display manager? [Recommended for login screen]"; then
+    if ! is_sddm_installed; then
+        install_sddm
+    else
+        print_message $YELLOW "SDDM is already installed."
+    fi
+
+    apply_sddm_theme
+    configure_sddm_theme
+    enable_start_sddm
+
+    print_message $GREEN "SDDM theme applied, service started, and configuration updated successfully!"
 else
-    echo "Sddm is already installed, skipping installation."
+    print_message $YELLOW "Skipping SDDM installation and configuration."
 fi
 
-apply_sddm_theme
-
-configure_sddm_theme
-
-enable_start_sddm
-
-echo "Sddm theme applied, service started, and configuration updated successfully!"
-
 print_message $BLUE "Default keybindings: Super+Enter (Terminal), Super+D (App Launcher)"
+if command -v pokemon-colorscripts >/dev/null 2>&1; then
+    print_message $BLUE "Try 'pokemon-colorscripts -r' for random Pokémon colors!"
+fi
+
 print_message $GREEN "SwayWM setup complete!"
