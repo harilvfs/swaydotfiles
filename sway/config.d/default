@@ -219,7 +219,7 @@ bindsym {
     # Launch the text editor
     $mod+t exec neovim
     # Launch the calculator
-    $mod+c exec galculator
+    $mod+c exec gnome-calculator
     # Launch the clipboard manager
     $mod+Ctrl+v exec cliphist list | fuzzel -d -w 90 -l 30 -p "Select an entry to copy it to your clipboard buffer:"| cliphist decode | wl-copy
     # Delete an entry from the clipboard manager
