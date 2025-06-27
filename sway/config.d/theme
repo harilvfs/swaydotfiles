@@ -6,7 +6,9 @@ gaps inner 2
 gaps outer 2
 
 # Hide titlebar on windows: 
-default_border pixel 2
+default_border none 
+default_floating_border none
+hide_edge_borders both
 
 # Default Font
 font pango:JetBrainsMono 10
