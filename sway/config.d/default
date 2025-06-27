@@ -239,3 +239,5 @@ bindsym {
     Shift+Print exec ~/.config/sway/scripts/screenshot_display.sh
 }
 
+# Kill Sway
+bindsym $mod+Shift+q exec pkill sway
