@@ -55,7 +55,7 @@
 > [!TIP]
 > If you want the same wallpapers, clone my wallpaper repository:
 > ```bash
-> git clone https://github.com/harilvfs/wallpapers ~/Pictures
+> git clone https://github.com/harilvfs/wallpapers ~/Pictures/wallpapers
 > ```
 >
 > Then apply wallpapers using **Azote**.
