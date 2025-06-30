@@ -42,6 +42,6 @@ working_directory = "None"
 
 # Themes --
 import = [ 
-  "~/.config/alacritty/nordic.toml",
+  "~/.config/alacritty/catppuccin-mocha.toml",
   "~/.config/alacritty/keybinds.toml"
 ]
