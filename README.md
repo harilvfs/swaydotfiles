@@ -42,6 +42,14 @@
 > ```bash
 > bash <(curl -L https://chalisehari.com.np/swaywm)
 > ```
+>
+> or
+>
+> If you are using fish shell
+>
+> ```bash
+>  bash -c "$(curl -fsSL chalisehari.com.np/swaywm)"
+> ```
 
 > [!IMPORTANT]
 > **Make sure to install `fzf` before running the script!**  
