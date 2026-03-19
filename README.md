@@ -19,7 +19,7 @@
 </div>
 
 
-### Features
+## Features
 - Minimal and aesthetic **`SwayWM`** configuration  
 - Custom **`Waybar`** with useful modules
 - Preconfigured **`Keybindings`** for better workflow  
@@ -37,7 +37,7 @@
 > sudo pacman -S --needed fzf --noconfirm
 > ```
 
-### Installation  
+## Installation  
 
 **Automatic Setup (For Arch Linux)**  
 If you're using **`Arch Linux`**, you can run the automated setup script:  
@@ -54,15 +54,15 @@ bash <(curl -L https://chalisehari.com.np/swaywm)
 >
 > Then apply wallpapers using **Azote**.
 
-### Dependencies
+## Dependencies
 
-**Core Dependencies (Install via `pacman`)**
+### Core Dependencies (Install via `pacman`)
  
 ```bash
 sudo pacman -S fastfetch fish foot nwg-drawer bluetui ttf-jetbrains-mono ttf-jetbrains-mono-nerd swappy swaylock waybar pango cairo gdk-pixbuf2 json-c scdoc meson ninja pcre2 gtk-layer-shell jsoncpp libsigc++ libdbusmenu-gtk3 libxkbcommon fmt spdlog glibmm gtkmm3 alsa-utils pipewire-pulse libnl iw wob swaybg swayidle fuzzel otf-font-awesome ttf-jetbrains-mono ttf-nerd-fonts-symbols ttf-ubuntu-font-family wl-clipboard grim slurp mako blueberry pamixer pavucontrol gnome-keyring polkit-gnome cliphist wl-clipboard autotiling gtklock swayidle xdg-desktop-portal xdg-desktop-portal-wlr xorg-xhost sddm kvantum qt5-wayland qt6-wayland dex wf-recorder nwg-hello blueman bluez bluez-libs bluez-qt bluez-qt5 bluez-tools bluez-utils alacritty kitty --noconfirm
 ```
 
-### AUR Packages (Install via `yay` or `paru`)**
+### AUR Packages (Install via `yay` or `paru`)
 
 ```bash
 yay -S swayfx waybar-module-pacman-updates-git wlroots-git --noconfirm
@@ -74,7 +74,7 @@ or
 paru -S swayfx waybar-module-pacman-updates-git wlroots-git --noconfirm
 ```
 
-### Keybindings  
+## Keybindings  
 
 Default Keybindings for essential applications:
  
@@ -84,6 +84,6 @@ Default Keybindings for essential applications:
 
 Check more keybindings **[here](https://github.com/harilvfs/swaydotfiles/blob/main/sway/config.d/default)**.  
 
-### Credits  
+## Credits  
 - **Inspired by** **[Garuda Sway Dotfiles](https://gitlab.com/garuda-linux/themes-and-settings/settings/garuda-sway-settings/-/tree/master)**  
 - **Maintained by** **[@harilvfs](https://github.com/harilvfs)**
