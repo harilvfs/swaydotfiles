@@ -8,6 +8,8 @@ GREEN="\033[1;32m"
 RED="\033[1;31m"
 YELLOW="\033[1;33m"
 BLUE="\033[1;34m"
+CYAN="\033[1;36m"
+BOLD="\033[1m"
 TEAL="\e[38;2;129;200;190m"
 NC="\033[0m"
 
@@ -31,7 +33,8 @@ FZF_COMMON="--layout=reverse \
 fzf_confirm() {
     local prompt="$1"
     local options=("Yes" "No")
-    local selected=$(printf "%s\n" "${options[@]}" | fzf ${FZF_COMMON} \
+    local selected
+    selected=$(printf "%s\n" "${options[@]}" | fzf ${FZF_COMMON} \
                                                      --height=40% \
                                                      --prompt="$prompt " \
                                                      --header="Confirm" \
@@ -47,31 +50,32 @@ fzf_confirm() {
 
 install_aur_helper() {
     if ! command -v yay >/dev/null 2>&1 && ! command -v paru >/dev/null 2>&1; then
-        print_message $GREEN "Installing yay as AUR helper..."
+        print_message "$GREEN" "Installing yay as AUR helper..."
 
         sudo pacman -S --needed base-devel git --noconfirm
 
-        temp_dir=$(mktemp -d)
-        cd "$temp_dir" || { print_message $RED "Failed to create temporary directory"; return 1; }
+        local temp_dir
+        temp_dir=$(mktemp -d) || { print_message "$RED" "Failed to create temporary directory"; return 1; }
+        cd "$temp_dir" || { print_message "$RED" "Failed to enter temporary directory"; return 1; }
 
         git clone https://aur.archlinux.org/yay.git
-        cd yay || { print_message $RED "Failed to enter yay directory"; return 1; }
+        cd yay || { print_message "$RED" "Failed to enter yay directory"; return 1; }
         makepkg -si --noconfirm
 
         cd "$OLDPWD" || true
         rm -rf "$temp_dir"
 
         if command -v yay >/dev/null 2>&1; then
-            print_message $GREEN "yay installed successfully."
+            print_message "$GREEN" "yay installed successfully."
         else
-            print_message $RED "Failed to install yay."
+            print_message "$RED" "Failed to install yay."
             return 1
         fi
     else
         if command -v yay >/dev/null 2>&1; then
-            print_message $YELLOW "AUR helper (yay) already installed."
+            print_message "$YELLOW" "AUR helper (yay) already installed."
         elif command -v paru >/dev/null 2>&1; then
-            print_message $YELLOW "AUR helper (paru) already installed."
+            print_message "$YELLOW" "AUR helper (paru) already installed."
         fi
     fi
 }
@@ -87,10 +91,10 @@ install_packages() {
     done
 
     if [ ${#missing_pkgs[@]} -ne 0 ]; then
-        print_message $GREEN "Installing missing packages: ${missing_pkgs[*]}"
-        sudo pacman -S "${missing_pkgs[@]}"
+        print_message "$GREEN" "Installing missing packages: ${missing_pkgs[*]}"
+        sudo pacman -S --needed "${missing_pkgs[@]}"
     else
-        print_message $YELLOW "All required packages are already installed."
+        print_message "$YELLOW" "All required packages are already installed."
     fi
 }
 
@@ -104,7 +108,7 @@ install_aur_packages() {
     elif command -v paru >/dev/null 2>&1; then
         aur_helper="paru"
     else
-        print_message $RED "No AUR helper found. Please install yay or paru first."
+        print_message "$RED" "No AUR helper found. Please install yay or paru first."
         return 1
     fi
 
@@ -115,18 +119,18 @@ install_aur_packages() {
     done
 
     if [ ${#missing_pkgs[@]} -ne 0 ]; then
-        print_message $GREEN "Installing missing AUR packages: ${missing_pkgs[*]}"
+        print_message "$GREEN" "Installing missing AUR packages: ${missing_pkgs[*]}"
         $aur_helper -S "${missing_pkgs[@]}"
     else
-        print_message $YELLOW "All required AUR packages are already installed."
+        print_message "$YELLOW" "All required AUR packages are already installed."
     fi
 }
 
 install_pokemon_colorscripts() {
-    print_message ${TEAL} "Installing Pokémon Color Scripts..."
+    print_message "${TEAL}" "Installing Pokémon Color Scripts..."
 
     if command -v pokemon-colorscripts >/dev/null 2>&1; then
-        print_message $YELLOW "Pokémon Color Scripts already installed."
+        print_message "$YELLOW" "Pokémon Color Scripts already installed."
         return 0
     fi
 
@@ -136,22 +140,22 @@ install_pokemon_colorscripts() {
     elif command -v paru >/dev/null 2>&1; then
         aur_helper="paru"
     else
-        print_message $RED "No AUR helper found. Installing yay first..."
+        print_message "$RED" "No AUR helper found. Installing yay first..."
         install_aur_helper
         if command -v yay >/dev/null 2>&1; then
             aur_helper="yay"
         else
-            print_message $RED "Failed to install AUR helper."
+            print_message "$RED" "Failed to install AUR helper."
             return 1
         fi
     fi
 
-    print_message $CYAN "Installing Pokémon Color Scripts from AUR..."
+    print_message "$CYAN" "Installing Pokémon Color Scripts from AUR..."
     if $aur_helper -S --noconfirm pokemon-colorscripts-git; then
-        print_message $GREEN "Pokémon Color Scripts installed successfully!"
-        print_message ${TEAL} "You can now use 'pokemon-colorscripts -r' to display a random Pokémon!"
+        print_message "$GREEN" "Pokémon Color Scripts installed successfully!"
+        print_message "${TEAL}" "You can now use 'pokemon-colorscripts -r' to display a random Pokémon!"
     else
-        print_message $RED "Failed to install Pokémon Color Scripts."
+        print_message "$RED" "Failed to install Pokémon Color Scripts."
         return 1
     fi
 }
@@ -165,7 +169,7 @@ manage_dotfiles() {
         if fzf_confirm "Existing dotfiles detected. Overwrite?"; then
             rm -rf "$repo_dir"
         else
-            print_message $YELLOW "Skipping dotfiles cloning."
+            print_message "$YELLOW" "Skipping dotfiles cloning."
             return
         fi
     fi
@@ -175,7 +179,8 @@ manage_dotfiles() {
     mkdir -p "$backup_dir"
 
     for config in "$repo_dir"/*; do
-        local config_name=$(basename "$config")
+        local config_name
+        config_name=$(basename "$config")
         if [ -e "$HOME/.config/$config_name" ]; then
             if fzf_confirm "Existing config $config_name detected. Backup?"; then
                 mv "$HOME/.config/$config_name" "$backup_dir/"
@@ -184,12 +189,17 @@ manage_dotfiles() {
         cp -r "$config" "$HOME/.config/"
     done
 
-    cp -r "$repo_dir"/.azotebg "$HOME/"
-    cp -r "$repo_dir"/.gtkrc-2.0 "$HOME/"
-    cp -r "$repo_dir"/.profile "$HOME/"
+    local home_files=(".azotebg" ".gtkrc-2.0" ".profile")
+    for f in "${home_files[@]}"; do
+        if [ -e "$repo_dir/$f" ]; then
+            cp -r "$repo_dir/$f" "$HOME/"
+        else
+            print_message "$YELLOW" "Optional file $f not found in repo, skipping."
+        fi
+    done
 
     if [ -d "$repo_dir/usr/share" ]; then
-        print_message $GREEN "Copying system-wide files..."
+        print_message "$GREEN" "Copying system-wide files..."
         sudo cp -r "$repo_dir/usr/share" /usr/
     fi
 }
@@ -197,29 +207,30 @@ manage_dotfiles() {
 manage_themes_icons() {
     local repo_url="$1"
     local target_dir="$2"
-    local temp_dir
     local repo_name
-
-    temp_dir=$(mktemp -d)
     repo_name=$(basename "$repo_url" .git)
+    local temp_dir
+    temp_dir=$(mktemp -d) || { print_message "$RED" "Failed to create temporary directory"; return 1; }
 
-    print_message $CYAN "Cloning $repo_name into temporary directory..."
+    print_message "$CYAN" "Cloning $repo_name into temporary directory..."
     git clone "$repo_url" "$temp_dir/$repo_name" || {
-        print_message $RED "Failed to clone $repo_name"
+        print_message "$RED" "Failed to clone $repo_name"
+        rm -rf "$temp_dir"
         return 1
     }
 
     mkdir -p "$target_dir"
 
-    print_message $GREEN "Copying contents to $target_dir..."
+    print_message "$GREEN" "Copying contents to $target_dir..."
     for item in "$temp_dir/$repo_name"/*; do
         if [ -d "$item" ]; then
-            local name=$(basename "$item")
+            local name
+            name=$(basename "$item")
             if [ -d "$target_dir/$name" ]; then
                 if fzf_confirm "Existing $name detected in $target_dir. Overwrite?"; then
                     rm -rf "$target_dir/$name"
                 else
-                    print_message $YELLOW "Skipping $name"
+                    print_message "$YELLOW" "Skipping $name"
                     continue
                 fi
             fi
@@ -228,7 +239,24 @@ manage_themes_icons() {
     done
 
     rm -rf "$temp_dir"
-    print_message $GREEN "$repo_name installed to $target_dir"
+    print_message "$GREEN" "$repo_name installed to $target_dir"
+}
+
+clone_repo_contents() {
+    local repo_url="$1"
+    local target_dir="$2"
+    local repo_name
+    repo_name=$(basename "$repo_url" .git)
+
+    mkdir -p "$target_dir"
+
+    print_message "$CYAN" "Cloning $repo_name directly into $target_dir..."
+    git clone "$repo_url" "$target_dir" || {
+        print_message "$RED" "Failed to clone $repo_name"
+        return 1
+    }
+
+    print_message "$GREEN" "$repo_name cloned to $target_dir"
 }
 
 if ! command -v fzf &> /dev/null; then
@@ -239,18 +267,18 @@ if ! command -v fzf &> /dev/null; then
     exit 1
 fi
 
-print_message $TEAL "If the setup fails, please manually use the dotfiles from:
-https://github.com/harilvfs/swaydotfiles" $NC
+print_message "${TEAL}" "If the setup fails, please manually use the dotfiles from:
+https://github.com/harilvfs/swaydotfiles"
 
-print_message $YELLOW"----------------------------------------"
+print_message "$YELLOW" "----------------------------------------"
 
 if command -v pacman &>/dev/null; then
-   print_message $GREEN "Arch Linux detected. Proceeding with setup..."
+   print_message "$GREEN" "Arch Linux detected. Proceeding with setup..."
 elif command -v dnf &>/dev/null; then
-   print_message $RED "Sway setup for Fedora is not finalized due to missing dependencies and runtime errors. Exiting."
+   print_message "$RED" "Sway setup for Fedora is not finalized due to missing dependencies and runtime errors. Exiting."
    exit 1
 else
-   print_message $RED "Unsupported distribution. Exiting."
+   print_message "$RED" "Unsupported distribution. Exiting."
    exit 1
 fi
 
@@ -284,8 +312,8 @@ manage_themes_icons "$ICON_REPO" "$ICON_DIR"
 if fzf_confirm "Do you want additional wallpapers? [Recommended]"; then
     WALLPAPER_REPO="https://github.com/harilvfs/wallpapers"
     WALLPAPER_DIR="$HOME/Pictures/wallpapers"
-    manage_themes_icons "$WALLPAPER_REPO" "$WALLPAPER_DIR"
-    print_message $GREEN "Wallpapers are located in $WALLPAPER_DIR. Apply them using azote."
+    clone_repo_contents "$WALLPAPER_REPO" "$WALLPAPER_DIR"
+    print_message "$GREEN" "Wallpapers are located in $WALLPAPER_DIR. Apply them using azote."
 fi
 
 is_sddm_installed() {
@@ -297,80 +325,81 @@ is_sddm_installed() {
 }
 
 install_sddm() {
-    print_message $GREEN "Installing SDDM..."
+    print_message "$GREEN" "Installing SDDM..."
     sudo pacman -S --noconfirm sddm
 }
 
+SDDM_THEME_VERSION="v1.0.0"
+SDDM_THEME_URL="https://github.com/catppuccin/sddm/releases/download/${SDDM_THEME_VERSION}/catppuccin-mocha.zip"
+
 apply_sddm_theme() {
-    theme_dir="/usr/share/sddm/themes/catppuccin-mocha"
+    local theme_dir="/usr/share/sddm/themes/catppuccin-mocha"
 
-if [ -d "$theme_dir" ]; then
-    print_message "$YELLOW" "$theme_dir already exists."
-    if fzf_confirm "Do you want to remove the existing theme and continue?"; then
-        sudo rm -rf "$theme_dir"
-        print_message "$GREEN" "$theme_dir removed."
-    else
-        print_message "$RED" "$theme_dir not removed, exiting."
-        exit 1
+    if [ -d "$theme_dir" ]; then
+        print_message "$YELLOW" "$theme_dir already exists."
+        if fzf_confirm "Do you want to remove the existing theme and continue?"; then
+            sudo rm -rf "$theme_dir"
+            print_message "$GREEN" "$theme_dir removed."
+        else
+            print_message "$RED" "$theme_dir not removed, skipping theme application."
+            return 1
+        fi
     fi
-fi
 
-    temp_dir=$(mktemp -d)
-    echo "Downloading Catppuccin Mocha theme..."
-    wget https://github.com/catppuccin/sddm/releases/download/v1.0.0/catppuccin-mocha.zip -O "$temp_dir/catppuccin-mocha.zip"
+    local temp_dir
+    temp_dir=$(mktemp -d) || { print_message "$RED" "Failed to create temporary directory"; return 1; }
+    print_message "$CYAN" "Downloading Catppuccin Mocha SDDM theme (${SDDM_THEME_VERSION})..."
+    wget "$SDDM_THEME_URL" -O "$temp_dir/catppuccin-mocha.zip" || {
+        print_message "$RED" "Failed to download SDDM theme."
+        rm -rf "$temp_dir"
+        return 1
+    }
 
-    unzip "$temp_dir/catppuccin-mocha.zip" -d "$temp_dir"
+    unzip "$temp_dir/catppuccin-mocha.zip" -d "$temp_dir" || {
+        print_message "$RED" "Failed to unzip SDDM theme."
+        rm -rf "$temp_dir"
+        return 1
+    }
 
-    cd "$temp_dir/catppuccin-mocha" || exit
-
-    echo "Copying the theme to /usr/share/sddm/themes..."
+    print_message "$GREEN" "Copying the theme to /usr/share/sddm/themes..."
     sudo cp -r "$temp_dir/catppuccin-mocha" /usr/share/sddm/themes/
 
     rm -rf "$temp_dir"
 }
 
 configure_sddm_theme() {
-    echo "Configuring sddm.conf to use the Catppuccin Mocha theme..."
-
-    if [ ! -f /etc/sddm.conf ]; then
-        sudo touch /etc/sddm.conf
-    fi
-
-    if ! grep -q "\[Theme\]" /etc/sddm.conf; then
-        echo "[Theme]" | sudo tee -a /etc/sddm.conf > /dev/null
-    fi
-
-    sudo sed -i '/\[Theme\]/a Current=catppuccin-mocha' /etc/sddm.conf
+    print_message "$CYAN" "Configuring sddm.conf to use the Catppuccin Mocha theme..."
+    printf "[Theme]\nCurrent=catppuccin-mocha\n" | sudo tee /etc/sddm.conf > /dev/null
 }
 
 enable_start_sddm() {
-    print_message $GREEN "Checking for existing display managers..."
+    print_message "$GREEN" "Checking for existing display managers..."
 
     if command -v gdm &> /dev/null; then
-        print_message $YELLOW "GDM detected. Removing GDM..."
+        print_message "$YELLOW" "GDM detected. Removing GDM..."
         sudo systemctl stop gdm
         sudo systemctl disable gdm --now
         sudo pacman -Rns --noconfirm gdm
     fi
 
     if command -v lightdm &> /dev/null; then
-        print_message $YELLOW "LightDM detected. Removing LightDM..."
+        print_message "$YELLOW" "LightDM detected. Removing LightDM..."
         sudo systemctl stop lightdm
         sudo systemctl disable lightdm --now
         sudo pacman -Rns --noconfirm lightdm
     fi
 
     if systemctl is-enabled greetd &> /dev/null; then
-        print_message $YELLOW "Greetd detected. Stopping and disabling Greetd..."
+        print_message "$YELLOW" "Greetd detected. Stopping and disabling Greetd..."
         sudo systemctl stop greetd
         sudo systemctl disable greetd --now
         if pacman -Qq greetd &> /dev/null; then
-            print_message $CYAN "Removing Greetd package..."
+            print_message "$CYAN" "Removing Greetd package..."
             sudo pacman -Rns --noconfirm greetd
         fi
     fi
 
-    print_message $GREEN "Enabling and starting the SDDM service..."
+    print_message "$GREEN" "Enabling and starting the SDDM service..."
     sudo systemctl enable sddm --now
 }
 
@@ -378,21 +407,21 @@ if fzf_confirm "Do you want to install and configure SDDM display manager? [Reco
     if ! is_sddm_installed; then
         install_sddm
     else
-        print_message $YELLOW "SDDM is already installed."
+        print_message "$YELLOW" "SDDM is already installed."
     fi
 
     apply_sddm_theme
     configure_sddm_theme
     enable_start_sddm
 
-    print_message $GREEN "SDDM theme applied, service started, and configuration updated successfully!"
+    print_message "$GREEN" "SDDM theme applied, service started, and configuration updated successfully!"
 else
-    print_message $YELLOW "Skipping SDDM installation and configuration."
+    print_message "$YELLOW" "Skipping SDDM installation and configuration."
 fi
 
-print_message ${TEAL} "Default keybindings: Super+Enter (Terminal), Super+D (App Launcher)"
+print_message "${TEAL}" "Default keybindings: Super+Enter (Terminal), Super+D (App Launcher)"
 if command -v pokemon-colorscripts >/dev/null 2>&1; then
-    print_message ${TEAL} "Try 'pokemon-colorscripts -r' for random Pokémon colors!"
+    print_message "${TEAL}" "Try 'pokemon-colorscripts -r' for random Pokémon colors!"
 fi
 
-print_message $GREEN "SwayWM setup complete!"
+print_message "$GREEN" "SwayWM setup complete!"
