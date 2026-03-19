@@ -46,15 +46,6 @@
 > ```bash
 > bash <(curl -L https://chalisehari.com.np/swaywm)
 > ```
->
-> or
->
-> If you are using fish shell
->
-> ```bash
->  bash -c "$(curl -fsSL chalisehari.com.np/swaywm)"
-> ```
-
 
 > [!TIP]
 > If you want the same wallpapers, clone my wallpaper repository:
