@@ -19,19 +19,16 @@
 </div>
 
 
-> **Features**
+> **🔹Features**
 > - Minimal and aesthetic **`SwayWM`** configuration  
 > - Custom **`Waybar`** with useful modules
 > - Preconfigured **`Keybindings`** for better workflow  
 > - Lightweight and efficient  
 
-<br>
-
 > [!CAUTION]
-> **I am NOT `responsible` for any system issues or data loss.**  
-> Please review the setup script before running it!  
-
-<br>
+> Make a backup of your existing configs before running.
+> I am NOT responsible for any system issues or data loss.
+> Please review the setup script before running it!
 
 > [!IMPORTANT]
 > **Make sure to install `fzf` before running the script!**  
@@ -58,7 +55,6 @@
 >  bash -c "$(curl -fsSL chalisehari.com.np/swaywm)"
 > ```
 
-<br>
 
 > [!TIP]
 > If you want the same wallpapers, clone my wallpaper repository:
@@ -68,9 +64,6 @@
 >
 > Then apply wallpapers using **Azote**.
 
-<br>
-
-> [!NOTE]
 > **Dependencies**
 >
 > **Core Dependencies (Install via `pacman`)**
@@ -89,7 +82,7 @@
 > ```
 
 ### Keybindings  
-> [!TIP]  
+
 > Default Keybindings for essential applications:
 > 
 > - **Terminal:** `Super + T`  
