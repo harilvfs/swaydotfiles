@@ -19,11 +19,10 @@
 </div>
 
 
-> **🚀 Features**
+> **Features**
 > - Minimal and aesthetic **`SwayWM`** configuration  
 > - Custom **`Waybar`** with useful modules
 > - Preconfigured **`Keybindings`** for better workflow  
-> - **`Autotiling`** support for automatic window management  
 > - Lightweight and efficient  
 
 <br>
@@ -33,6 +32,14 @@
 > Please review the setup script before running it!  
 
 <br>
+
+> [!IMPORTANT]
+> **Make sure to install `fzf` before running the script!**  
+> It is required for the interactive prompts.  
+> ```bash
+> sudo pacman -S --needed fzf --noconfirm
+> ```
+
 
 > 🛠️ Installation  
 >
@@ -51,13 +58,6 @@
 >  bash -c "$(curl -fsSL chalisehari.com.np/swaywm)"
 > ```
 
-> [!IMPORTANT]
-> **Make sure to install `fzf` before running the script!**  
-> It is required for the interactive prompts.  
-> ```bash
-> sudo pacman -S --needed fzf --noconfirm
-> ```
-
 <br>
 
 > [!TIP]
@@ -71,15 +71,15 @@
 <br>
 
 > [!NOTE]
-> **📌 Dependencies**
+> **Dependencies**
 >
-> ✅ **Core Dependencies (Install via `pacman`)**
+> **Core Dependencies (Install via `pacman`)**
 > 
 > ```bash
 > sudo pacman -S fastfetch fish foot nwg-drawer bluetui ttf-jetbrains-mono ttf-jetbrains-mono-nerd swappy swaylock waybar pango cairo gdk-pixbuf2 json-c scdoc meson ninja pcre2 gtk-layer-shell jsoncpp libsigc++ libdbusmenu-gtk3 libxkbcommon fmt spdlog glibmm gtkmm3 alsa-utils pipewire-pulse libnl iw wob swaybg swayidle fuzzel otf-font-awesome ttf-jetbrains-mono ttf-nerd-fonts-symbols ttf-ubuntu-font-family wl-clipboard grim slurp mako blueberry pamixer pavucontrol gnome-keyring polkit-gnome cliphist wl-clipboard autotiling gtklock swayidle xdg-desktop-portal xdg-desktop-portal-wlr xorg-xhost sddm kvantum qt5-wayland qt6-wayland dex wf-recorder nwg-hello blueman bluez bluez-libs bluez-qt bluez-qt5 bluez-tools bluez-utils alacritty kitty --noconfirm
 > ```
 >
-> 📦 **AUR Packages (Install via `yay` or `paru`)**
+> **AUR Packages (Install via `yay` or `paru`)**
 > ```bash
 > yay -S swayfx waybar-module-pacman-updates-git wlroots-git --noconfirm
 > ```
@@ -88,7 +88,7 @@
 > paru -S swayfx waybar-module-pacman-updates-git wlroots-git --noconfirm
 > ```
 
-### ⌨️ Keybindings  
+### Keybindings  
 > [!TIP]  
 > Default Keybindings for essential applications:
 > 
@@ -98,14 +98,6 @@
 >
 > Check more keybindings **[here](https://github.com/harilvfs/swaydotfiles/blob/main/sway/config.d/default)**.  
 
-### 🎯 Related Projects  
-> [!TIP]  
-> Want a better **`Bash prompt` , `Zsh setup` , or other system enhancements**?
-> 
-> Check out my **`Carch Project`**:  
-> **🔗 [Carch - Arch & Fedora Linux Automation](https://github.com/harilvfs/carch)**  
-
-### 🎯 Credits  
+### Credits  
 > - **Inspired by** **[Garuda Sway Dotfiles](https://gitlab.com/garuda-linux/themes-and-settings/settings/garuda-sway-settings/-/tree/master)**  
 > - **Maintained by** **[@harilvfs](https://github.com/harilvfs)**
-
