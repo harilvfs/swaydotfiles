@@ -2,7 +2,7 @@
 
 ### Appearance
 # window corner radius in px
-corner_radius 4
+corner_radius 0
 
 # Window background blur
 blur enable

@@ -2,8 +2,8 @@
 exec_always ~/.config/sway/scripts/import-gsettings
 
 # Set inner/outer gaps
-gaps inner 2
-gaps outer 2
+gaps inner 0
+gaps outer 0
 
 # Hide titlebar on windows: 
 default_border none 
@@ -14,7 +14,7 @@ hide_edge_borders both
 font pango:JetBrainsMono 10
 
 # Thin borders:
-smart_borders on
+smart_borders off 
 
 # Set wallpaper:
 exec ~/.azotebg

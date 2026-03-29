@@ -11,10 +11,10 @@ set {
     $right l
 
     # Default terminal emulator
-    $term foot 
+    $term kitty 
 
     # Application launcher
-    $launcher fuzzel
+    $launcher rofi -show drun
 
     # Application menu
     $menu nwg-drawer
@@ -219,7 +219,7 @@ bindsym {
     # Launch the text editor
     $mod+t exec neovim
     # Launch the calculator
-    $mod+c exec gnome-calculator
+    $mod+c exec gnome-calculator 
     # Launch the clipboard manager
     $mod+Ctrl+v exec cliphist list | fuzzel -d -w 90 -l 30 -p "Select an entry to copy it to your clipboard buffer:"| cliphist decode | wl-copy
     # Delete an entry from the clipboard manager
@@ -239,5 +239,6 @@ bindsym {
     Shift+Print exec ~/.config/sway/scripts/screenshot_display.sh
 }
 
-# Kill Sway
+
+# Kill Sway 
 bindsym $mod+Shift+q exec pkill sway

@@ -4,3 +4,5 @@
 
 # user config directory
 include $HOME/.config/sway/config.d/*
+
+exec_always Xwayland &
