@@ -78,9 +78,10 @@ paru -S swayfx waybar-module-pacman-updates-git wlroots-git --noconfirm
 
 Default Keybindings for essential applications:
  
-- **Terminal:** `Super + T`  
+- **Terminal:** `Super + Return` (Return=Enter)  
 - **Launcher:** `Super + D`  
 - **File Manager:** `Super + E`  
+- **Browser:** `Super + B`
 
 Check more keybindings **[here](https://github.com/harilvfs/swaydotfiles/blob/main/sway/config.d/default)**.  
 
