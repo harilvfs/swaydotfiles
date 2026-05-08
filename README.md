@@ -1,3 +1,6 @@
+> [!WARNING]
+> This dotfiles & setup script is no longer maintained by me, so use it at your own risk.
+
 <p align="center">
   <img src="https://raw.githubusercontent.com/harilvfs/assets/refs/heads/main/sway/swaywmicon.png" width="70" />
 </p>
